@@ -1,0 +1,35 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav 
+      #drawer 
+      class="sidenav" 
+      [ngClass]="{hidden: (isHandset | async)!.matches}"
+      fixedInViewport="false"
+      [attr.role]="isHandset ? 'dialog' : 'navigation'"
+      [mode]="(isHandset | async)!.matches ? 'over' : 'side'"
+      [opened]="!(isHandset | async)!.matches">
+    <mat-toolbar color="primary">Menu</mat-toolbar>
+    <mat-nav-list>
+      <!-- <a mat-list-item href="#" routerLink="">Link 1</a> -->
+      <a mat-list-item href="#">Tavoite</a>
+      <a mat-list-item href="#">Tips & Tricks</a>
+      <a mat-list-item href="#">Harrastukset</a>
+      <a mat-list-item href="#">Asetukset</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar class="mat-toolbar">
+      <span class="spacer"></span>
+      <span class="terppi">Terppi</span>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset | async)!.matches">
+        <mat-icon class="mat-icon" aria-label="Side nav toggle icon">menu</mat-icon> <!-- to use different icons just replace "menu". Check backupterppi.txt  -Roni personal memo -->
+      </button>
+      <!-- <span class="terppi">Terppi</span> -->
+    </mat-toolbar>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
