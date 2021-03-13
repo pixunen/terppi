@@ -1,1 +1,83 @@
-<p>home works!</p>
+<mat-card class="home-Card">
+    <mat-card-header>
+        <mat-card-title>Hei User</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <div style="position:relative; width:100%; height:220px">
+        <mat-progress-spinner id="#spinneri1"
+        [value]="spinner1" 
+        diameter="200" 
+        strokeWidth="12"
+        style="position:absolute; top:10px; left:45px"
+        >
+        </mat-progress-spinner>
+        <mat-progress-spinner id="#spinneri2"
+        [value]="spinner2" 
+        diameter="170" 
+        strokeWidth="12"
+        style="position:absolute; top:25px; left:60px"
+        ></mat-progress-spinner>
+        <mat-progress-spinner id="#spinneri3"
+        [value]="spinner3" 
+        diameter="140" 
+        strokeWidth="12"
+        style="position:absolute; top:40px; left:75px"
+        ></mat-progress-spinner>  
+    </div>
+    <mat-divider></mat-divider>
+    <div class="mat-title">Liikunta:</div>
+    <div class="mat-title">Ruokailu:</div>
+    <div class="mat-title">Nukkuminen:</div>
+
+</mat-card>
+
+
+
+<!--
+
+    Voi ehkä käyttää jossain?
+
+<div class="week-Prog">
+    <button mat-mini-fab>Ma</button>
+    <button mat-mini-fab>Ti</button>
+    <button mat-mini-fab>Ke</button>
+    <button mat-mini-fab>To</button>
+    <button mat-mini-fab>Pe</button>
+    <button mat-mini-fab>La</button>
+    <button mat-mini-fab>Su</button>
+</div>
+-->
+
+
+<!--  
+
+<div class="homePage" id="wrappingDiv">
+    <div class="terppiMid">
+        <h1 id="homeTerppi">Terppi</h1>
+    </div>       
+</div>
+
+    Keksikää miten käyttää tätä
+
+    <mat-progress-spinner class="spinneriWrapperi" id="#spinneri1"
+        [value]="spinner1" 
+        diameter="350" 
+        strokeWidth="12"
+        style="top:0px; left:-106px" ylä
+        >
+        </mat-progress-spinner>
+        <mat-progress-spinner class="spinneriWrapperi" id="#spinneri2"
+        [value]="spinner2" 
+        diameter="320" 
+        strokeWidth="10"
+        style="top:-335px; left:-92px"
+        ></mat-progress-spinner> 
+
+Alkuperäiset style arvot
+        ylä:
+position:absolute; top:0px; left:0px
+        ala:
+position:absolute; top:15px; left:15px
+
+    
+    -->
