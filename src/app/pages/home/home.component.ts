@@ -15,8 +15,6 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-<<<<<<< Updated upstream
-=======
   spinner1 = 80;
   spinner3 = 70;
   spinner2 = 60;
@@ -24,5 +22,4 @@ export class HomeComponent implements OnInit {
   liikuntaScores: number | string  = `${this.spinner1} / 100`;
 
 
->>>>>>> Stashed changes
 }
