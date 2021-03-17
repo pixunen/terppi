@@ -16,6 +16,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { GameComponent } from './pages/game/game.component';
 import { StatsComponent } from './pages/stats/stats.component';
+import { MaterialsModule } from './materials/materials.module';
+// Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
+// pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
 @NgModule({
   declarations: [
@@ -41,7 +44,8 @@ import { StatsComponent } from './pages/stats/stats.component';
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MaterialsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  //CommonModule
 })
+
 export class HomeComponent implements OnInit {
 
   
@@ -15,11 +18,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  spinner1 = 80;
-  spinner3 = 70;
-  spinner2 = 60;
-
-  liikuntaScores: number | string  = `${this.spinner1} / 100`;
-
+  spinner1 = 58;
+  spinner2 = 78;
+  spinner3 = 43;
 
 }
