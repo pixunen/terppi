@@ -1,3 +1,4 @@
+// all here old
 .homePage#wrappingDiv {
     // todo lisää @mediat
     justify-content: center;
@@ -26,6 +27,56 @@
 
 };
 
+.home-screen {
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    //background-color:seagreen;
+    //border-radius: 12px;
+}
+
+.home-screen-scores {
+    text-align: center;
+    margin-top: 2rem;
+    
+}
+
+.home-screen-text-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    height: 4rem;
+    max-width: 40%;
+    padding-top: 1.5rem;
+    //background-color:seagreen;
+    color: seashell;
+    margin-bottom: 42px;
+    border-radius: 12px;
+
+}
+
+.home-screen-spinners {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 42px;
+
+    .home-screen-spinners-wrapper{
+        position:relative; 
+        width:100%; 
+        height:220px;
+        margin-right: auto;
+        margin-left: auto;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.spinner-scores-wrapper{
+    color: seashell;
+    text-align: center;
+    //margin-right: 5rem;
+}
+
+//old
 .home-Card{
     max-width: 300px;
     min-height: 350px;
@@ -33,11 +84,12 @@
     margin-right: auto;
     margin-top: 4rem;
 }
-
+//old
 .mat-card>:first-child {
     justify-content: center;
 }
 
+//old?
 .week-Prog{
     display: flex;
     justify-content: space-between;
@@ -50,6 +102,7 @@
 
 // todo säädä kaikki toimimaan isoimmilla näytöillä
 @media(min-width: 760px){
+    // old
     .home-Card{
         max-width: 600px;
         min-height: 300px;
@@ -57,6 +110,13 @@
         margin-right: auto;
         margin-top: 4rem;
 
+    }
+
+}
+
+@media(max-width: 760px){
+    .home-screen-text-wrapper{
+        max-width: 100%;
     }
 }
 
