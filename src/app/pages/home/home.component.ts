@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor() {
+
+   }
 
   ngOnInit(): void {
   }
 
+<<<<<<< Updated upstream
+=======
+  spinner1 = 80;
+  spinner3 = 70;
+  spinner2 = 60;
+
+  liikuntaScores: number | string  = `${this.spinner1} / 100`;
+
+
+>>>>>>> Stashed changes
 }
