@@ -27,14 +27,6 @@
 
 };
 
-h1 { 
-    width: 100%;
-    position: fixed; 
-    z-index: 2000;
-    display: flex;
-    justify-content: space-between;
-}
-
 .home-screen {
     //width: 100 %;
     //margin-left: auto;
@@ -42,8 +34,12 @@ h1 {
     width: 100%;
     position: fixed; 
     z-index: 2000;
-    height: 20%;
-    //display: flex;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: auto;
+    height: 82%;
+    overflow: scroll; overflow-x:hidden;
     //justify-content: space-between;
     background-color: rgb(31, 31, 31)
     //border-radius: 12px;

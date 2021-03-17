@@ -35,8 +35,10 @@ import { MaterialsModule } from './materials/materials.module';
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
       {path: 'stats', component: StatsComponent},
-      {path: 'game', component: GameComponent}
+      {path: 'game', component: GameComponent},
+      {path: '', redirectTo: 'home', pathMatch: 'full'}
     ]),
+    
     BrowserAnimationsModule,
     MatSliderModule,
     LayoutModule,
