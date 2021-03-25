@@ -33,17 +33,18 @@
     //margin-right: auto;
     width: 100%;
     position: fixed; 
-    z-index: 2000;
+    z-index: 1;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     margin: auto;
-    height: 82%;
+    height: 87%;
     overflow: scroll; overflow-x:hidden;
     //justify-content: space-between;
     background-color: rgb(31, 31, 31)
     //border-radius: 12px;
 }
+
 
 .home-screen-scores {
     text-align: center;
@@ -69,7 +70,7 @@
     margin-right: auto;
     margin-bottom: 42px;
 
-    .home-screen-spinners-wrapper{
+    .home-screen-spinners-wrapper {
         position:relative; 
         width:100%; 
         height:220px;
@@ -77,13 +78,42 @@
         margin-left: auto;
         display: flex;
         justify-content: center;
+       
     }
 }
+/*
+mat-progress-spinner {
+    
+    ::ng-deep circle {
+        stroke: #33dd82;
+    }
+}
+*/
+
+:host ::ng-deep #spinneri3 circle{   
+    stroke: #0CC20C;
+}
+
+:host ::ng-deep #spinneri2 circle{   
+    stroke: #0CC20C;
+}
+
+:host ::ng-deep #spinneri1 circle{   
+    stroke: #0CC20C;
+}
+
+
 
 .spinner-scores-wrapper{
     color: seashell;
     text-align: center;
-    //margin-right: 5rem;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nukkuminen-scores{
+    margin-bottom: 67px;
 }
 
 //old

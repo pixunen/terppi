@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatDividerModule } from '@angular/material/divider';
     MatCardModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatDividerModule
+    MatDividerModule,
+    MatExpansionModule
   ]
 })
 export class MaterialsModule { }
