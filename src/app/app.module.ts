@@ -17,6 +17,7 @@ import { BottomNavComponent } from './bottom-nav/bottom-nav.component';
 import { GameComponent } from './pages/game/game.component';
 import { StatsComponent } from './pages/stats/stats.component';
 import { MaterialsModule } from './materials/materials.module';
+import { Pedometer } from '@ionic-native/pedometer/ngx';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -39,6 +40,7 @@ import { MaterialsModule } from './materials/materials.module';
       {path: '', redirectTo: 'home', pathMatch: 'full'}
     ]),
     
+    
     BrowserAnimationsModule,
     MatSliderModule,
     LayoutModule,
@@ -47,9 +49,9 @@ import { MaterialsModule } from './materials/materials.module';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MaterialsModule
+    MaterialsModule,
   ],
-  providers: [],
+  providers: [ Pedometer ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

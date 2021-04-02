@@ -1,1 +1,6 @@
 <h1> Tämä on Stat Page</h1>
+<button (click)="countSteps()">Laske Askeleet</button>
+<button (click)="stop()">Lopeta</button>
+<div>
+    {{StepcounterService.steps | json}}
+</div>

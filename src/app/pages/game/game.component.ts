@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoService } from '../../services/Photo/photo.service';
 
 @Component({
   selector: 'app-game',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss']
 })
 export class GameComponent implements OnInit {
+  constructor(public photoService: PhotoService) { }
 
-  constructor() { }
+  async ngOnInit() {
+    await this.photoService.loadSaved();
+  }
 
-  ngOnInit(): void {
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 
 }

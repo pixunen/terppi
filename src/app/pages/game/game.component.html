@@ -1,1 +1,5 @@
 <h1> Tämä on Game Page</h1>
+<button (click)="addPhotoToGallery()">Click Me for Photo</button>
+<li *ngFor="let photo of photoService.photos;">
+    <img src="{{photo.webviewPath}}">
+</li>

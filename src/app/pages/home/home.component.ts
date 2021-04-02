@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   changeSpinnerColor() {
 
     let spinner = document.getElementById('spinneri1');
-    console.log(spinner);
+    //console.log(spinner);
 
     let color = document.getElementsByClassName('ng-star-inserted');
     //console.log("color: " + color[1]);
