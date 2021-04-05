@@ -18,6 +18,7 @@ import { GameComponent } from './pages/game/game.component';
 import { StatsComponent } from './pages/stats/stats.component';
 import { MaterialsModule } from './materials/materials.module';
 import { Pedometer } from '@ionic-native/pedometer/ngx';
+import { Health } from '@ionic-native/health/ngx';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -51,7 +52,7 @@ import { Pedometer } from '@ionic-native/pedometer/ngx';
     MatListModule,
     MaterialsModule,
   ],
-  providers: [ Pedometer ],
+  providers: [ Pedometer, Health ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
