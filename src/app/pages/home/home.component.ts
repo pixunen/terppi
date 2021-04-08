@@ -12,31 +12,60 @@ export class HomeComponent implements OnInit {
 
   
   constructor() {
-
+ 
    }
 
   ngOnInit(): void {
+    this.animateSpinners(this.precentages);
   }
 
+  // precentages of the spinners
   spinner1 = 80;
+  radius1 = 90;
+
   spinner2 = 60;
+  radius2 = 69;
+
   spinner3 = 70;
+  radius3 = 52;
+
+  precentages = [this.spinner1, this.spinner2, this.spinner3];
+  radiusses = [this.radius1, this.radius2, this.radius3];
   
-
-  changeSpinnerColor() {
-
-    let spinner = document.getElementById('spinneri1');
-    console.log(spinner);
-
-    let color = document.getElementsByClassName('ng-star-inserted');
-    //console.log("color: " + color[1]);
-  }
 
   liikuntaScores: number | string  = `${this.spinner1} / 100`;
 
   ruokaScores: number | string = `${this.spinner2} / 100`;
 
   nukkumisScore: number | string = `${this.spinner3} / 100`;
+
+  animateSpinners(precentages: number[]) {
+    let radius = 0;
+    let circumference = 0;
+    let strokeDashOffset = 0;
+    for (let i = 0; i < precentages.length; i++) {
+        
+        let spinner = (<HTMLElement>document.getElementById("circle-complete-"+(i+1)));
+        radius = 40;
+        circumference = 2 * Math.PI * radius;
+        strokeDashOffset = circumference - ((precentages[i] * circumference) / 100);
+        spinner.style.strokeDashoffset = "0";
+        this.animateProgress(spinner, circumference, strokeDashOffset);
+    }
+}
+
+animateProgress(element: HTMLElement, pathL: number, maxPath: number) {
+
+  pathL -= 2;
+
+  element.style.strokeDashoffset = pathL.toString();
+
+  if (pathL > maxPath){
+      setTimeout(() => { this.animateProgress(element, pathL, maxPath);}, 10);
+  } else {
+      return;
+  }
+}
 
 
 }

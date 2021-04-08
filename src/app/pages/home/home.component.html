@@ -7,6 +7,100 @@
     </div>
 
     <div class="home-screen-spinners">
+        <div class="spinner-wrapper">
+            <div class="spinner-container">
+                <svg class="radial-progress" id="radial-progress-1" width="250" height="250">
+                    <circle class="circle-shadow" cx="125" cy="125" r="90"></circle>
+                    <circle class="circle-complete" id="circle-complete-1" cx="125" cy="125" [attr.r]="radius1" style="stroke-dashoffset: 565.486677646;"></circle>
+                </svg>
+                <!--<text class="percentage" x="50%" y="50%">82%</text> -->
+            </div>
+    
+            <div class="spinner-container">
+                <svg class="radial-progress" id="radial-progress-2" width="250" height="250">
+                    <circle class="circle-shadow" cx="125" cy="125" r="69"></circle>
+                    <circle class="circle-complete" id="circle-complete-2" cx="125" cy="125" [attr.r]="radius2" style="stroke-dashoffset: 439.822971503;"></circle>
+                </svg>
+            </div>
+    
+            <div class="spinner-container">
+                <svg class="radial-progress" id="radial-progress-3" width="250" height="250">
+                    <circle class="circle-shadow" cx="125" cy="125" r="52"></circle>
+                    <circle class="circle-complete" id="circle-complete-3" cx="125" cy="125" [attr.r]="radius3" style="stroke-dashoffset: 314.159265359;"></circle>
+                </svg>
+            </div>
+        </div>
+    </div>
+    
+    <div class="spinner-scores-wrapper">
+
+        <div class="liikuta-scores" id="liikuntaScoresID">
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Liikunta
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span> <br>
+                    <button mat-raised-button id="AddLiikuntaBtn">lisää</button>
+                </mat-expansion-panel>
+            </mat-accordion> 
+        </div>
+
+     <br>
+
+        <div class="ruokailu-scores" id="ruokailuScoresID">
+            <mat-accordion >
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Ruokailu
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span> <br>
+                    <button mat-raised-button id="AddRuokaBtn">lisää</button>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+
+     <br>
+
+        <div class="nukkuminen-scores" id="nukkuminenScoresID">
+            <mat-accordion >
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Nukkuminen
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='nukkumisScore' style="display: inline"></p></span> <br>
+                    <button mat-raised-button id="addNukkuminenBtn">lisää</button>
+                </mat-expansion-panel>
+            </mat-accordion>    
+        </div>
+            
+    </div>
+
+</div>
+
+
+
+
+<!--
+
         <div class="home-screen-spinners-wrapper">
             <mat-progress-spinner id="spinneri1" color="warn"
             [value]="spinner1" 
@@ -27,75 +121,9 @@
             strokeWidth="12"
             style="position:absolute; top:40px;"
             ></mat-progress-spinner>
-            {{changeSpinnerColor()}}  
-        </div>
-    </div>
-    
-    <div class="spinner-scores-wrapper">
-
-        <div class="liikuta-scores">
-            <mat-accordion>
-                <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Liikunta
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Jotain tekstiä tähän?
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span>
-                </mat-expansion-panel>
-            </mat-accordion> 
         </div>
 
-     <br>
 
-        <div class="ruokailu-scores">
-            <mat-accordion >
-                <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Ruokailu
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Jotain tekstiä tähän?
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span>
-                </mat-expansion-panel>
-            </mat-accordion>
-        </div>
-
-     <br>
-
-        <div class="nukkuminen-scores">
-            <mat-accordion >
-                <mat-expansion-panel hideToggle>
-                    <mat-expansion-panel-header>
-                        <mat-panel-title>
-                            Nukkuminen
-                        </mat-panel-title>
-                        <mat-panel-description>
-                            Jotain tekstiä tähän?
-                        </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='nukkumisScore' style="display: inline"></p></span>
-                </mat-expansion-panel>
-            </mat-accordion>    
-        </div>
-            
-    </div>
-
-</div>
-
-
-
-
-<!--
     Vanhaa varmuudeksi säästössä
 
     <div class="mat-h1">Liikunta

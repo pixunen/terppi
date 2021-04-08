@@ -66,11 +66,13 @@
 }
 
 .home-screen-spinners {
+    width: 100%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 42px;
 
-    .home-screen-spinners-wrapper {
+    .spinner-wrapper {
         position:relative; 
         width:100%; 
         height:220px;
@@ -90,19 +92,18 @@ mat-progress-spinner {
 }
 */
 
+// Spinner colors - a better way?
 :host ::ng-deep #spinneri3 circle{   
-    stroke: #0CC20C;
+    stroke: #4ee04e;
 }
 
 :host ::ng-deep #spinneri2 circle{   
-    stroke: #0CC20C;
+    stroke: #e0de49;
 }
 
 :host ::ng-deep #spinneri1 circle{   
-    stroke: #0CC20C;
+    stroke: #4768d4;
 }
-
-
 
 .spinner-scores-wrapper{
     color: seashell;
@@ -112,32 +113,108 @@ mat-progress-spinner {
     margin-right: auto;
 }
 
-.nukkuminen-scores{
-    margin-bottom: 67px;
-}
-
-//old
-.home-Card{
-    max-width: 300px;
-    min-height: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 4rem;
-}
-//old
-.mat-card>:first-child {
-    justify-content: center;
-}
-
-//old?
-.week-Prog{
+.spinner-wrapper{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    padding: 1em;
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }
+
+.spinner-container{
+    position: absolute;
+    height: 250px;
+    width: 250px;
+    justify-content: center;
+    align-items: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+svg{
+    &.radial-progress {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        transform: rotate(-90deg);
+        
+        circle {
+            fill: rgba(0,0,0,0);
+            stroke: rgb(58, 174, 216);
+            stroke-dashoffset: 565.486677646; 
+            stroke-width: 20;
+            stroke-linecap: round;
+
+            &.circle-shadow { 
+                opacity: 0.25;
+            }
+            &.circle-complete { 
+                stroke-dasharray: 565.486677646; 
+            }
+
+        }
+
+        text{
+            fill: rgb(0, 0, 0);
+            text-anchor: middle;
+        }
+
+        &#radial-progress-2 circle{
+            stroke-dashoffset: 439.822971503;
+            stroke-width: 15;
+            stroke: rgb(247, 221, 114);
+
+            &.circle-complete {
+                stroke-dasharray: 439.822971503;
+            }
+        }
+
+        &#radial-progress-3 circle{
+            stroke-dashoffset: 314.159265359;
+            stroke-width: 13;
+            stroke: rgb(93, 211, 158);
+
+            &.circle-complete {
+                stroke-dasharray: 314.159265359;
+            }
+        }
+    }
+}
+
+// Scores colors
+:host #liikuntaScoresID {
+    .mat-expansion-panel{
+        background-color: #4ee04e;
+    }
+    #mat-expansion-panel-header-0{
+        background-color: #4ee04e;
+    }
+}
+
+:host #ruokailuScoresID {
+    .mat-expansion-panel{
+        background-color: #e0de49;
+    }
+    #mat-expansion-panel-header-1{
+        background-color: #e0de49;
+    }
+}
+
+:host #nukkuminenScoresID {
+    &.nukkuminen-scores {
+        margin-bottom: 67px;
+    }
+    .mat-expansion-panel{
+        background-color: #4768d4;
+    }
+    #mat-expansion-panel-header-2{
+        background-color: #4768d4;
+    }
+}
+
 
 
 // todo säädä kaikki toimimaan isoimmilla näytöillä
