@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {EngineService} from './engine.service';
 
 @Component({
-  selector: 'app-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  selector: 'app-engine',
+  templateUrl: './game.component.html'
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('rendererCanvas', {static: true})
+  public rendererCanvas!: ElementRef<HTMLCanvasElement>;
 
-  ngOnInit(): void {
+  public constructor(private engServ: EngineService) {
+  }
+
+  public ngOnInit(): void {
+    this.engServ.createScene(this.rendererCanvas);
+    this.engServ.animate();
   }
 
 }
