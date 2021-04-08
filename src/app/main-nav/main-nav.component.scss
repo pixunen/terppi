@@ -2,6 +2,7 @@
 	height: 100%;
 	width: 100%;
 	position: fixed;
+	overflow: hidden;
 }
 .sidenav {
 	width: 200px;
@@ -9,6 +10,7 @@
 }
 .mat-toolbar {
 	background: #424242;
+	overflow: hidden;
 }
 .mat-icon {
 	color: white;

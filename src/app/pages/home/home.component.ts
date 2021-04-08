@@ -16,17 +16,17 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.animateSpinners(this.precentages);
+    this.animateSpinners(this.precentages, this.radiusses);
   }
 
   // precentages of the spinners
-  spinner1 = 80;
+  spinner1 = 100;
   radius1 = 90;
 
   spinner2 = 60;
   radius2 = 69;
 
-  spinner3 = 70;
+  spinner3 = 40;
   radius3 = 52;
     //console.log(spinner);
 
@@ -40,14 +40,14 @@ export class HomeComponent implements OnInit {
 
   nukkumisScore: number | string = `${this.spinner3} / 100`;
 
-  animateSpinners(precentages: number[]) {
+  animateSpinners(precentages: number[], radiusses: number[]) {
     let radius = 0;
     let circumference = 0;
     let strokeDashOffset = 0;
     for (let i = 0; i < precentages.length; i++) {
         
         let spinner = (<HTMLElement>document.getElementById("circle-complete-"+(i+1)));
-        radius = 40;
+        radius = radiusses[i];
         circumference = 2 * Math.PI * radius;
         strokeDashOffset = circumference - ((precentages[i] * circumference) / 100);
         spinner.style.strokeDashoffset = "0";

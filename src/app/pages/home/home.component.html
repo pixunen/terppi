@@ -1,8 +1,8 @@
-
 <div class="home-screen">
-    <div class="home-screen-scores">
+
+    <div class="home-screen-welcome">
         <div class="home-screen-text-wrapper">
-            <div class="mat-display-1">Hei User</div>
+            <h1>Hei User</h1>
         </div>
     </div>
 
@@ -10,7 +10,7 @@
         <div class="spinner-wrapper">
             <div class="spinner-container">
                 <svg class="radial-progress" id="radial-progress-1" width="250" height="250">
-                    <circle class="circle-shadow" cx="125" cy="125" r="90"></circle>
+                    <circle class="circle-shadow" cx="125" cy="125" [attr.r]="radius1"></circle>
                     <circle class="circle-complete" id="circle-complete-1" cx="125" cy="125" [attr.r]="radius1" style="stroke-dashoffset: 565.486677646;"></circle>
                 </svg>
                 <!--<text class="percentage" x="50%" y="50%">82%</text> -->
@@ -18,15 +18,15 @@
     
             <div class="spinner-container">
                 <svg class="radial-progress" id="radial-progress-2" width="250" height="250">
-                    <circle class="circle-shadow" cx="125" cy="125" r="69"></circle>
+                    <circle class="circle-shadow" cx="125" cy="125" [attr.r]="radius2"></circle>
                     <circle class="circle-complete" id="circle-complete-2" cx="125" cy="125" [attr.r]="radius2" style="stroke-dashoffset: 439.822971503;"></circle>
                 </svg>
             </div>
     
             <div class="spinner-container">
                 <svg class="radial-progress" id="radial-progress-3" width="250" height="250">
-                    <circle class="circle-shadow" cx="125" cy="125" r="52"></circle>
-                    <circle class="circle-complete" id="circle-complete-3" cx="125" cy="125" [attr.r]="radius3" style="stroke-dashoffset: 314.159265359;"></circle>
+                    <circle class="circle-shadow" cx="125" cy="125" [attr.r]="radius3"></circle>
+                    <circle class="circle-complete" id="circle-complete-3" cx="125" cy="125" [attr.r]="radius3" style="stroke-dashoffset: 326.725635973;"></circle>
                 </svg>
             </div>
         </div>
@@ -93,8 +93,11 @@
         </div>
             
     </div>
-
 </div>
+
+
+
+
 
 
 
