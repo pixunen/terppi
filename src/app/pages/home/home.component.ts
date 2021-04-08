@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
 
   spinner3 = 70;
   radius3 = 52;
+    //console.log(spinner);
 
   precentages = [this.spinner1, this.spinner2, this.spinner3];
   radiusses = [this.radius1, this.radius2, this.radius3];

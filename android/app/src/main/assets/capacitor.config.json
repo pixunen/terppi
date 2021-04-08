@@ -1,0 +1,6 @@
+{
+  "appId": "com.example.app",
+  "appName": "Terppi",
+  "webDir": "www",
+  "npmClient": "npm"
+}
