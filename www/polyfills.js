@@ -181,8 +181,8 @@ module.exports = Object.setPrototypeOf || ('__proto__' in {} ? function () {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\Users\ottop\Documents\Projektit\Ionic\terppiofficial\src\polyfills.ts */"hN/g");
-module.exports = __webpack_require__(/*! C:\Users\ottop\Documents\Projektit\Ionic\terppiofficial\node_modules\@angular-devkit\build-angular\src\webpack\jit-polyfills.js */"rZy+");
+__webpack_require__(/*! C:\Users\niitt\Desktop\uusiterppi\terppiofficial\src\polyfills.ts */"hN/g");
+module.exports = __webpack_require__(/*! C:\Users\niitt\Desktop\uusiterppi\terppiofficial\node_modules\@angular-devkit\build-angular\src\webpack\jit-polyfills.js */"rZy+");
 
 
 /***/ }),
@@ -2442,6 +2442,7 @@ __webpack_require__.r(__webpack_exports__);
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
+//import './zone-flags';
  // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS

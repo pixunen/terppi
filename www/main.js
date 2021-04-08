@@ -12,35 +12,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameComponent", function() { return GameComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./game.component.html */ "WWYX");
-/* harmony import */ var _game_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.component.scss */ "Xa7A");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/Photo/photo.service */ "vyil");
-
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _engine_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./engine.service */ "Nd77");
 
 
 
 
 let GameComponent = class GameComponent {
-    constructor(photoService) {
-        this.photoService = photoService;
+    constructor(engServ) {
+        this.engServ = engServ;
     }
     ngOnInit() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.photoService.loadSaved();
-        });
-    }
-    addPhotoToGallery() {
-        this.photoService.addNewToGallery();
+        this.engServ.createScene(this.rendererCanvas);
+        this.engServ.animate();
     }
 };
 GameComponent.ctorParameters = () => [
-    { type: _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_4__["PhotoService"] }
+    { type: _engine_service__WEBPACK_IMPORTED_MODULE_3__["EngineService"] }
 ];
+GameComponent.propDecorators = {
+    rendererCanvas: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["ViewChild"], args: ['rendererCanvas', { static: true },] }]
+};
 GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'app-game',
-        template: _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_game_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
+        selector: 'app-engine',
+        template: _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__["default"]
     })
 ], GameComponent);
 
@@ -55,7 +51,7 @@ GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\Users\ottop\Documents\Projektit\Ionic\terppiofficial\src\main.ts */"zUnb");
+module.exports = __webpack_require__(/*! C:\Users\niitt\Desktop\uusiterppi\terppiofficial\src\main.ts */"zUnb");
 
 
 /***/ }),
@@ -118,7 +114,7 @@ HomeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\r\n<button (click)=\"countSteps()\">Laske Askeleet</button>\r\n<button (click)=\"stop()\">Lopeta</button>\r\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\r\n<div>\r\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\r\n    Kaikki tieto: {{StepcounterService.steps | json}}\r\n</div>\r\n<div>\r\n   Healthkit askeleet: {{ HealthkitService.object | json}}\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\r\n<button (click)=\"countSteps()\">Laske Askeleet</button>\r\n<button (click)=\"stop()\">Lopeta</button>\r\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\r\n<div>\r\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\r\n    Kaikki tieto: {{StepcounterService.steps | json}}\r\n</div>\r\n<div>\r\n   Healthkit askeleet: {{ HealthkitService.object | json}}\r\n</div>\r\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\r\n<li *ngFor=\"let photo of photoService.photos;\">\r\n    <img src=\"{{photo.webviewPath}}\">\r\n</li>");
 
 /***/ }),
 
@@ -264,6 +260,116 @@ module.exports = webpackAsyncContext;
 
 /***/ }),
 
+/***/ "Nd77":
+/*!**********************************************!*\
+  !*** ./src/app/pages/game/engine.service.ts ***!
+  \**********************************************/
+/*! exports provided: EngineService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EngineService", function() { return EngineService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
+/* harmony import */ var three__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! three */ "Womt");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! three/examples/jsm/loaders/GLTFLoader.js */ "NK00");
+/* harmony import */ var three_examples_jsm_controls_OrbitControls__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! three/examples/jsm/controls/OrbitControls */ "RyHr");
+
+
+
+
+
+let EngineService = class EngineService {
+    constructor(ngZone) {
+        this.ngZone = ngZone;
+        this.frameId = null;
+    }
+    ngOnDestroy() {
+        if (this.frameId != null) {
+            cancelAnimationFrame(this.frameId);
+        }
+    }
+    createScene(canvas) {
+        // The first step is to get the reference of the canvas element from our HTML document
+        let me = this;
+        this.canvas = canvas.nativeElement;
+        this.renderer = new three__WEBPACK_IMPORTED_MODULE_1__["WebGLRenderer"]({
+            canvas: this.canvas,
+            antialias: true // smooth edges
+        });
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        // create the scene
+        this.scene = new three__WEBPACK_IMPORTED_MODULE_1__["Scene"]();
+        this.scene.background = new three__WEBPACK_IMPORTED_MODULE_1__["Color"](0x87CEEB);
+        this.camera = new three__WEBPACK_IMPORTED_MODULE_1__["PerspectiveCamera"](75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        this.camera.position.z = 9;
+        this.camera.position.y = 1;
+        this.camera.position.x = 4;
+        this.scene.add(this.camera);
+        // white light
+        this.light = new three__WEBPACK_IMPORTED_MODULE_1__["AmbientLight"](0xFFFFFF, 0.8);
+        // this.light.position.z = 0.8;
+        this.scene.add(this.light);
+        this.light1 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0xFF0040, 4, 50);
+        this.scene.add(this.light1);
+        this.light2 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0x0040FF, 3, 50);
+        this.scene.add(this.light2);
+        this.light3 = new three__WEBPACK_IMPORTED_MODULE_1__["PointLight"](0x80FF80, 4, 50);
+        this.scene.add(this.light3);
+        // controls
+        const controls = new three_examples_jsm_controls_OrbitControls__WEBPACK_IMPORTED_MODULE_4__["OrbitControls"](this.camera, this.renderer.domElement);
+        controls.update();
+        this.loaderGLTF = new three_examples_jsm_loaders_GLTFLoader_js__WEBPACK_IMPORTED_MODULE_3__["GLTFLoader"]();
+        this.loaderGLTF.load('../../assets/main/saari009_geo3_bake2.glb', function (gltf) {
+            console.log(gltf);
+            me.scene.add(gltf.scene);
+        }, undefined, function (error) {
+            console.error(error);
+        });
+    }
+    animate() {
+        // We have to run this outside angular zones,
+        // because it could trigger heavy changeDetection cycles.
+        this.ngZone.runOutsideAngular(() => {
+            if (document.readyState !== 'loading') {
+                this.render();
+            }
+            else {
+                window.addEventListener('DOMContentLoaded', () => {
+                    this.render();
+                });
+            }
+            window.addEventListener('resize', () => {
+                this.resize();
+            });
+        });
+    }
+    render() {
+        this.frameId = requestAnimationFrame(() => {
+            this.render();
+        });
+        this.renderer.render(this.scene, this.camera);
+    }
+    resize() {
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        this.camera.aspect = width / height;
+        this.camera.updateProjectionMatrix();
+        this.renderer.setSize(width, height);
+    }
+};
+EngineService.ctorParameters = () => [
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgZone"] }
+];
+EngineService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({ providedIn: 'root' })
+], EngineService);
+
+
+
+/***/ }),
+
 /***/ "Sy1n":
 /*!**********************************!*\
   !*** ./src/app/app.component.ts ***!
@@ -315,6 +421,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/Stepcounter/stepcounter.service */ "eu9t");
 /* harmony import */ var _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/Healthkit/healthkit.service */ "fmiJ");
+/* harmony import */ var _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/Photo/photo.service */ "vyil");
+
 
 
 
@@ -322,12 +430,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let StatsComponent = class StatsComponent {
-    constructor(StepcounterService, HealthkitService) {
+    constructor(StepcounterService, HealthkitService, photoService) {
         this.StepcounterService = StepcounterService;
         this.HealthkitService = HealthkitService;
+        this.photoService = photoService;
         this.askeleet = "";
     }
     ngOnInit() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.photoService.loadSaved();
+        });
     }
     getSteppes() {
         console.log("Haetaan askeleet..");
@@ -342,10 +454,14 @@ let StatsComponent = class StatsComponent {
         console.log("Counting Ends");
         this.StepcounterService.stopSteps();
     }
+    addPhotoToGallery() {
+        this.photoService.addNewToGallery();
+    }
 };
 StatsComponent.ctorParameters = () => [
     { type: _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__["StepcounterService"] },
-    { type: _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__["HealthkitService"] }
+    { type: _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__["HealthkitService"] },
+    { type: _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__["PhotoService"] }
 ];
 StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -368,7 +484,7 @@ StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<main-nav>\r\n  <router-outlet></router-outlet>\r\n  <app-bottom-nav></app-bottom-nav>\r\n</main-nav>\r\n\r\n\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<main-nav>\r\n  <router-outlet></router-outlet>\r\n  <app-bottom-nav></app-bottom-nav>\r\n</main-nav>\r\n\r\n\r\n\r\n");
 
 /***/ }),
 
@@ -381,20 +497,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Game Page</h1>\r\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\r\n<li *ngFor=\"let photo of photoService.photos;\">\r\n    <img src=\"{{photo.webviewPath}}\">\r\n</li>\r\n");
-
-/***/ }),
-
-/***/ "Xa7A":
-/*!************************************************!*\
-  !*** ./src/app/pages/game/game.component.scss ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("body {\n  width: 100%;\n  position: fixed;\n  z-index: 2000;\n  display: flex;\n  justify-content: space-between;\n}\n\nimg {\n  padding: 3em;\n  width: 30%;\n  height: 30%;\n  border: 1px solid;\n  padding: 10px;\n  box-shadow: 5px 10px #888888;\n}\n\nli {\n  padding: 1em;\n  list-style-type: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxnYW1lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0FBQ0o7O0FBQ0E7RUFDSSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGFBQUE7RUFDQSw0QkFBQTtBQUVKOztBQUFBO0VBQ0ksWUFBQTtFQUNBLHFCQUFBO0FBR0oiLCJmaWxlIjoiZ2FtZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkgeyBcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcG9zaXRpb246IGZpeGVkOyBcclxuICAgIHotaW5kZXg6IDIwMDA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG59XHJcbmltZyB7XHJcbiAgICBwYWRkaW5nOiAzZW07XHJcbiAgICB3aWR0aDogMzAlO1xyXG4gICAgaGVpZ2h0OiAzMCU7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZDtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICBib3gtc2hhZG93OiA1cHggMTBweCAjODg4ODg4O1xyXG59XHJcbmxpIHtcclxuICAgIHBhZGRpbmc6IDFlbTtcclxuICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTtcclxuXHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("  <div class=\"engine-wrapper\">\r\n    <canvas #rendererCanvas id=\"renderCanvas\"></canvas>\r\n  </div>\r\n");
 
 /***/ }),
 
