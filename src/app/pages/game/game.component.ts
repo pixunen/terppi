@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {EngineService} from './engine.service';
 
+
 @Component({
   selector: 'app-engine',
   templateUrl: './game.component.html'

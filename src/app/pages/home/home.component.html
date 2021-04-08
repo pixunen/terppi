@@ -8,39 +8,86 @@
 
     <div class="home-screen-spinners">
         <div class="home-screen-spinners-wrapper">
-            <mat-progress-spinner id="#spinneri1"
+            <mat-progress-spinner id="spinneri1" color="warn"
             [value]="spinner1" 
             diameter="200" 
             strokeWidth="12"
             style="position:absolute; top:10px;"
             >
             </mat-progress-spinner>
-            <mat-progress-spinner id="#spinneri2"
+            <mat-progress-spinner id="spinneri2" color="accent"
             [value]="spinner2" 
             diameter="170" 
             strokeWidth="12"
             style="position:absolute; top:25px;"
             ></mat-progress-spinner>
-            <mat-progress-spinner id="#spinneri3"
+            <mat-progress-spinner id="spinneri3"
             [value]="spinner3" 
             diameter="140" 
             strokeWidth="12"
             style="position:absolute; top:40px;"
-            ></mat-progress-spinner>  
+            ></mat-progress-spinner>
+            {{changeSpinnerColor()}}  
         </div>
     </div>
+    
     <div class="spinner-scores-wrapper">
-        <div class="mat-h1">Liikunta
-            <div class="liikunta-scores">
-                <span [innerHTML]='liikuntaScores'></span>
-            </div>
+
+        <div class="liikuta-scores">
+            <mat-accordion>
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Liikunta
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span>
+                </mat-expansion-panel>
+            </mat-accordion> 
         </div>
-        <div class="mat-h1">Ruokailu
-            <div class="ruokailu-scores">78/100</div>
+
+     <br>
+
+        <div class="ruokailu-scores">
+            <mat-accordion >
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Ruokailu
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span>
+                </mat-expansion-panel>
+            </mat-accordion>
         </div>
-        <div class="mat-h1">Nukkuminen
-            <div class="nukkuminen-scores">43/100</div>
+
+     <br>
+
+        <div class="nukkuminen-scores">
+            <mat-accordion >
+                <mat-expansion-panel hideToggle>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Nukkuminen
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Jotain tekstiä tähän?
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>Tänne lisätiedot esim</p>
+                    <span>Päivän tavoite: <p [innerHTML]='nukkumisScore' style="display: inline"></p></span>
+                </mat-expansion-panel>
+            </mat-accordion>    
         </div>
+            
     </div>
 
 </div>
@@ -49,6 +96,22 @@
 
 
 <!--
+    Vanhaa varmuudeksi säästössä
+
+    <div class="mat-h1">Liikunta
+            <div class="liikunta-scores">
+                <span [innerHTML]='liikuntaScores' ></span>
+            </div>
+    </div>
+
+    <div class="mat-h1">Ruokailu
+            <div class="ruokailu-scores">78/100</div>
+    </div>
+
+        
+    <div class="mat-h1">Nukkuminen
+            <div class="nukkuminen-scores">43/100</div>
+    </div>
 
     Vanha tapa, tein mat-cardilla <-- säästin jos todetaankin paremmaksi
 
@@ -84,6 +147,12 @@
     <div class="mat-title">Nukkuminen:</div>
 
 </mat-card>
+
+-->
+
+
+
+<!--
 
     Voi ehkä käyttää jossain?
 

@@ -1,1 +1,15 @@
 <h1> Tämä on Stat Page</h1>
+<button (click)="countSteps()">Laske Askeleet</button>
+<button (click)="stop()">Lopeta</button>
+<button (click)="getSteppes()">Hae Healthkit askeleet</button>
+<div>
+    Askeleet : {{StepcounterService.steps.numberOfSteps}}
+    Kaikki tieto: {{StepcounterService.steps | json}}
+</div>
+<div>
+   Healthkit askeleet: {{ HealthkitService.object | json}}
+</div>
+<button (click)="addPhotoToGallery()">Click Me for Photo</button>
+<li *ngFor="let photo of photoService.photos;">
+    <img src="{{photo.webviewPath}}">
+</li>
