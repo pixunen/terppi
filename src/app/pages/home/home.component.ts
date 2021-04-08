@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class HomeComponent implements OnInit {
 
-  
+  // get the needet data so we can calc the precentages.
   constructor() {
  
    }
@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
     this.animateSpinners(this.precentages, this.radiusses);
   }
 
-  // precentages of the spinners
+  // precentages and radiusses of the spinners
   spinner1 = 100;
   radius1 = 90;
 
@@ -40,33 +40,35 @@ export class HomeComponent implements OnInit {
 
   nukkumisScore: number | string = `${this.spinner3} / 100`;
 
+  // function to animate the svg spinners
   animateSpinners(precentages: number[], radiusses: number[]) {
     let radius = 0;
     let circumference = 0;
     let strokeDashOffset = 0;
+    // call animateProgress on each spinner and give the values needed
+    // circumference is the length of the circle
+    // strokeDashOffset is the current offset calculated based on the precentage <-- which is calculated based on set goals and...
     for (let i = 0; i < precentages.length; i++) {
         
         let spinner = (<HTMLElement>document.getElementById("circle-complete-"+(i+1)));
         radius = radiusses[i];
         circumference = 2 * Math.PI * radius;
         strokeDashOffset = circumference - ((precentages[i] * circumference) / 100);
-        spinner.style.strokeDashoffset = "0";
+        //spinner.style.strokeDashoffset = "0";
         this.animateProgress(spinner, circumference, strokeDashOffset);
     }
-}
-
-animateProgress(element: HTMLElement, pathL: number, maxPath: number) {
-
-  pathL -= 2;
-
-  element.style.strokeDashoffset = pathL.toString();
-
-  if (pathL > maxPath){
-      setTimeout(() => { this.animateProgress(element, pathL, maxPath);}, 10);
-  } else {
-      return;
   }
-}
+  // Call this function until pathL == maxPath
+  animateProgress(element: HTMLElement, pathL: number, maxPath: number) {
 
+    pathL -= 2;
 
+    element.style.strokeDashoffset = pathL.toString();
+
+    if (pathL > maxPath){
+        setTimeout(() => { this.animateProgress(element, pathL, maxPath);}, 10);
+    } else {
+        return;
+    }
+  }
 }
