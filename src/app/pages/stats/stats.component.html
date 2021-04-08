@@ -9,3 +9,7 @@
 <div>
    Healthkit askeleet: {{ HealthkitService.object | json}}
 </div>
+<button (click)="addPhotoToGallery()">Click Me for Photo</button>
+<li *ngFor="let photo of photoService.photos;">
+    <img src="{{photo.webviewPath}}">
+</li>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StepcounterService } from '../../services/Stepcounter/stepcounter.service';
 import { HealthkitService } from '../../services/Healthkit/healthkit.service';
+import { PhotoService } from '../../services/Photo/photo.service';
 
 
 @Component({
@@ -10,9 +11,10 @@ import { HealthkitService } from '../../services/Healthkit/healthkit.service';
 })
 export class StatsComponent implements OnInit {
   askeleet:any = "";
-  constructor(public StepcounterService: StepcounterService, public HealthkitService: HealthkitService) { }
+  constructor(public StepcounterService: StepcounterService, public HealthkitService: HealthkitService, public photoService: PhotoService) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.photoService.loadSaved();
   }
   
   getSteppes() {
@@ -27,6 +29,9 @@ export class StatsComponent implements OnInit {
   stop() {
     console.log("Counting Ends");
     this.StepcounterService.stopSteps();
+  }
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 
 }
