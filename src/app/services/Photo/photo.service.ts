@@ -61,7 +61,7 @@ private async savePicture(cameraPhoto: CameraPhoto) {
     // already loaded into memory
     return {
       filepath: fileName,
-      webviewPath: base64Data
+      webviewPath: cameraPhoto.webPath //base64Data
     };
   }
 }
@@ -120,6 +120,6 @@ public async loadSaved() {
 
 export interface Photo {
   filepath: string;
-  webviewPath: string;
+  webviewPath: string | any;
 }
 

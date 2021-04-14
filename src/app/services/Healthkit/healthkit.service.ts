@@ -8,7 +8,9 @@ export class HealthkitService {
 
   constructor(private health: Health) { }
   steppes:any = [];
-  object:any = {};
+  object:any = [];
+
+  
 
   getSteppes() {
     this.health.requestAuthorization([
@@ -17,23 +19,25 @@ export class HealthkitService {
         read: ['steps']
       }
     ]);
-  }
-  saveData() {
-    this.health.queryAggregated({
-      startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
-      endDate: new Date(), // now
-      dataType: 'steps',
-      bucket: 'day'
-    }).then(HealthData => this.steppes.push(HealthData));
-
     
-    for (let key of Object.keys(this.steppes)) { 
+  }
+  public async saveData() {
+    if(!this.object.length) {
+      this.health.queryAggregated({
+        startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+        endDate: new Date(), // now
+        dataType: 'steps',
+        bucket: 'day'
+      }).then(HealthData => this.steppes.push(HealthData));
+  
+      for (let key of Object.keys(this.steppes)) { 
         for (let value of this.steppes[key]) { 
-            this.object[key] = this.object[key] || []
-            this.object[key].push(
-                value['value']
-            )
+          this.object[key] = this.object[key] || []
+          this.object[key].push(
+            value['value']
+          );
         } 
+      }  
     } 
   }
 }

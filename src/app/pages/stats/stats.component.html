@@ -18,9 +18,17 @@
     Askeleet : {{StepcounterService.steps.numberOfSteps}}
     Kaikki tieto: {{StepcounterService.steps | json}}
 </div>
-<div>
-   Healthkit askeleet: {{ HealthkitService.object | json}}
-</div>
+
+<table>
+    <tr>Kolmen päivän askeleet</tr>
+    <tr><th>Toissapäivänä</th><th>Eillen</th><th>Tänään</th></tr>
+    <tr *ngFor="let steps of HealthkitService.object;">
+        <td>{{ steps[0] }}</td>
+        <td>{{ steps[1] }}</td>
+        <td>{{ steps[2] }}</td>
+     </tr>
+</table>
+
 <button (click)="addPhotoToGallery()">Click Me for Photo</button>
 <li *ngFor="let photo of photoService.photos;">
     <img src="{{photo.webviewPath}}">

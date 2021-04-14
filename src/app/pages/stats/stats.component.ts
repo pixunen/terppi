@@ -3,8 +3,7 @@ import { StepcounterService } from '../../services/Stepcounter/stepcounter.servi
 import { HealthkitService } from '../../services/Healthkit/healthkit.service';
 import { PhotoService } from '../../services/Photo/photo.service';
 import { ChartDataSets, ChartOptions } from 'chart.js';
-import { Color, Label } from 'ng2-charts';
-import { ChartsModule } from 'ng2-charts';
+import { Color, Label, ChartsModule } from 'ng2-charts';
 
 
 
@@ -14,20 +13,23 @@ import { ChartsModule } from 'ng2-charts';
   styleUrls: ['./stats.component.scss']
 })
 export class StatsComponent implements OnInit {
-  askeleet:any = "";
   constructor(public StepcounterService: StepcounterService,
     public HealthkitService: HealthkitService, 
     public photoService: PhotoService, 
     public ChartsModule: ChartsModule) { }
 
+    
   async ngOnInit() {
     await this.photoService.loadSaved();
+    await this.HealthkitService.saveData();
   }
   
   getSteppes() {
     console.log("Haetaan askeleet..")
-    this.HealthkitService.getSteppes();
-    this.HealthkitService.saveData();
+    //this.HealthkitService.getSteppes();
+    //this.HealthkitService.saveData();
+    //console.log(this.HealthkitService.object[0]);
+    //this.numeroita();
   }
   countSteps() {
     console.log("Counting Starts..");
@@ -40,12 +42,12 @@ export class StatsComponent implements OnInit {
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
   }
+  
 
-
+  
   lineChartData: ChartDataSets[] = [
-    { data: [80, 70, 20], label: 'Testi Askeleet' },
-    { data: [100, 50, 10], label: 'Syke' },
-    { data: [this.askeleet], label: 'Askeleet' },
+    { data: [1000, 800, 2000], label: 'Testi Askeleet' },
+    { data: this.HealthkitService.object, label: 'Askeleet' },
   ];
 
   lineChartLabels: Label[] = ['Toissapäivänä', 'Eillen', 'Tänään'];
@@ -66,3 +68,5 @@ export class StatsComponent implements OnInit {
   lineChartType = 'line';
 
 }
+
+
