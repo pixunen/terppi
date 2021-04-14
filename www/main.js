@@ -14,28 +14,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./game.component.html */ "WWYX");
 /* harmony import */ var _game_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.component.scss */ "Xa7A");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/Photo/photo.service */ "vyil");
-
 
 
 
 
 let GameComponent = class GameComponent {
-    constructor(photoService) {
-        this.photoService = photoService;
-    }
+    constructor() { }
     ngOnInit() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.photoService.loadSaved();
-        });
-    }
-    addPhotoToGallery() {
-        this.photoService.addNewToGallery();
     }
 };
-GameComponent.ctorParameters = () => [
-    { type: _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_4__["PhotoService"] }
-];
+GameComponent.ctorParameters = () => [];
 GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
         selector: 'app-game',
@@ -118,7 +106,7 @@ HomeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\r\n<button (click)=\"countSteps()\">Laske Askeleet</button>\r\n<button (click)=\"stop()\">Lopeta</button>\r\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\r\n<div>\r\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\r\n    Kaikki tieto: {{StepcounterService.steps | json}}\r\n</div>\r\n<div>\r\n   Healthkit askeleet: {{ HealthkitService.object | json}}\r\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\r\n<button (click)=\"countSteps()\">Laske Askeleet</button>\r\n<button (click)=\"stop()\">Lopeta</button>\r\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\r\n<div>\r\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\r\n    Kaikki tieto: {{StepcounterService.steps | json}}\r\n</div>\r\n<div>\r\n   Healthkit askeleet: {{ HealthkitService.object | json}}\r\n</div>\r\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\r\n<li *ngFor=\"let photo of photoService.photos;\">\r\n    <img src=\"{{photo.webviewPath}}\">\r\n</li>");
 
 /***/ }),
 
@@ -315,6 +303,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/Stepcounter/stepcounter.service */ "eu9t");
 /* harmony import */ var _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/Healthkit/healthkit.service */ "fmiJ");
+/* harmony import */ var _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/Photo/photo.service */ "vyil");
+
 
 
 
@@ -322,12 +312,16 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let StatsComponent = class StatsComponent {
-    constructor(StepcounterService, HealthkitService) {
+    constructor(StepcounterService, HealthkitService, photoService) {
         this.StepcounterService = StepcounterService;
         this.HealthkitService = HealthkitService;
+        this.photoService = photoService;
         this.askeleet = "";
     }
     ngOnInit() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            yield this.photoService.loadSaved();
+        });
     }
     getSteppes() {
         console.log("Haetaan askeleet..");
@@ -342,10 +336,14 @@ let StatsComponent = class StatsComponent {
         console.log("Counting Ends");
         this.StepcounterService.stopSteps();
     }
+    addPhotoToGallery() {
+        this.photoService.addNewToGallery();
+    }
 };
 StatsComponent.ctorParameters = () => [
     { type: _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__["StepcounterService"] },
-    { type: _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__["HealthkitService"] }
+    { type: _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__["HealthkitService"] },
+    { type: _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__["PhotoService"] }
 ];
 StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
@@ -381,7 +379,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Game Page</h1>\r\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\r\n<li *ngFor=\"let photo of photoService.photos;\">\r\n    <img src=\"{{photo.webviewPath}}\">\r\n</li>\r\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Game Page</h1>\r\n\r\n");
 
 /***/ }),
 
@@ -394,7 +392,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("body {\n  width: 100%;\n  position: fixed;\n  z-index: 2000;\n  display: flex;\n  justify-content: space-between;\n}\n\nimg {\n  padding: 3em;\n  width: 30%;\n  height: 30%;\n  border: 1px solid;\n  padding: 10px;\n  box-shadow: 5px 10px #888888;\n}\n\nli {\n  padding: 1em;\n  list-style-type: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxnYW1lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0FBQ0o7O0FBQ0E7RUFDSSxZQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxpQkFBQTtFQUNBLGFBQUE7RUFDQSw0QkFBQTtBQUVKOztBQUFBO0VBQ0ksWUFBQTtFQUNBLHFCQUFBO0FBR0oiLCJmaWxlIjoiZ2FtZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkgeyBcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcG9zaXRpb246IGZpeGVkOyBcclxuICAgIHotaW5kZXg6IDIwMDA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG59XHJcbmltZyB7XHJcbiAgICBwYWRkaW5nOiAzZW07XHJcbiAgICB3aWR0aDogMzAlO1xyXG4gICAgaGVpZ2h0OiAzMCU7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZDtcclxuICAgIHBhZGRpbmc6IDEwcHg7XHJcbiAgICBib3gtc2hhZG93OiA1cHggMTBweCAjODg4ODg4O1xyXG59XHJcbmxpIHtcclxuICAgIHBhZGRpbmc6IDFlbTtcclxuICAgIGxpc3Qtc3R5bGUtdHlwZTogbm9uZTtcclxuXHJcbn0iXX0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("body {\n  width: 100%;\n  position: fixed;\n  z-index: 2000;\n  display: flex;\n  justify-content: space-between;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxnYW1lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0FBQ0oiLCJmaWxlIjoiZ2FtZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkgeyBcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgcG9zaXRpb246IGZpeGVkOyBcclxuICAgIHotaW5kZXg6IDIwMDA7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAganVzdGlmeS1jb250ZW50OiBzcGFjZS1iZXR3ZWVuO1xyXG59Il19 */");
 
 /***/ }),
 

@@ -19,6 +19,7 @@ import { StatsComponent } from './pages/stats/stats.component';
 import { MaterialsModule } from './materials/materials.module';
 import { Pedometer } from '@ionic-native/pedometer/ngx';
 import { Health } from '@ionic-native/health/ngx';
+import { ChartsModule } from 'ng2-charts';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -51,8 +52,9 @@ import { Health } from '@ionic-native/health/ngx';
     MatIconModule,
     MatListModule,
     MaterialsModule,
+    ChartsModule,
   ],
-  providers: [ Pedometer, Health ],
+  providers: [ Pedometer, Health, ChartsModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

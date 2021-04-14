@@ -1,4 +1,16 @@
 <h1> Tämä on Stat Page</h1>
+
+<div class="chart-wrapper">
+    <canvas baseChart  
+        [datasets]="lineChartData" 
+        [labels]="lineChartLabels" 
+        [options]="lineChartOptions"
+        [colors]="lineChartColors" 
+        [legend]="lineChartLegend" 
+        [chartType]="lineChartType" 
+        [plugins]="lineChartPlugins">
+    </canvas>
+</div>
 <button (click)="countSteps()">Laske Askeleet</button>
 <button (click)="stop()">Lopeta</button>
 <button (click)="getSteppes()">Hae Healthkit askeleet</button>
