@@ -1,0 +1,49 @@
+<!--<div class="hobbies-screen">
+<h1 class="text_header"> Tämä on Harrastukset Page</h1>
+<p class="text_choise">Valitse harrastuksesi</p>
+<form action="#">
+  <input type="checkbox" id="hobby1" name="hobby1" value="football">
+  <label class="text" for="hobby1"> Jalkapallo</label><br>
+  <input type="checkbox" id="hobby2" name="hobby2" value="icehokey">
+  <label class="text" for="hobby2"> Jääkiekko</label><br>
+  <input type="checkbox" id="hobby3" name="hobby3" value="floorball">
+  <label class="text" for="hobby3"> Salibandy</label><br>
+  <input type="checkbox" id="hobby4" name="hobby4" value="basketball">
+  <label class="text" for="hobby4"> Koripallo</label><br>
+  <input type="checkbox" id="hobby5" name="hobby5" value="running">
+  <label class="text" for="hobby5"> Juoksu</label><br>
+  <input type="checkbox" id="hobby6" name="hobby6" value="swimming">
+  <label class="text" for="hobby6"> Uinti</label><br>
+  <input type="checkbox" id="hobby7" name="hobby7" value="tennis">
+  <label class="text" for="hobby7"> Tennis</label><br>
+  <input type="checkbox" id="hobby8" name="hobby8" value="volleyball">
+  <label class="text" for="hobby8"> Lentopallo</label><br>
+  <input type="checkbox" id="hobby9" name="hobby9" value="baseball">
+  <label class="text" for="hobby9"> Pesäpallo</label><br>
+  <input type="checkbox" id="hobby10" name="hobby10" value="athletics">
+  <label class="text" for="hobby10"> Yleisurheilu</label><br><br>
+  <input type="submit" value="Valitse">
+</form> 
+</div>-->
+<!--<label>
+  Name:
+  <input type="text" [formControl]="hobbies">
+  <p>
+    Value: {{ hobbies.value }}
+  </p>
+  <p>
+    <button (click)="updateName()">Update Name</button>
+  </p>
+</label>-->
+
+<div class="hobbies-screen">
+  <h3 class="text_header">Sinun Harrastuksesi: <span>{{displayText}}</span></h3>
+</div>
+<div>
+<mat-form-field>
+  <input class="input" matInput placeholder="Kirjoita harrastuksesi" #input><br>
+</mat-form-field>
+</div>
+<div>
+<button mat-button color="primary" (click)="displayText = input.value">Tallenna</button>
+</div>
