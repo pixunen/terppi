@@ -47,9 +47,9 @@ export class EngineService implements OnDestroy {
     this.camera = new THREE.PerspectiveCamera(
       75, window.innerWidth / window.innerHeight, 0.1, 1000
     );
-    this.camera.position.z = 6.27;
-    this.camera.position.y = 5.19;
-    this.camera.position.x = 5.64;
+    this.camera.position.z = 8.28;
+    this.camera.position.y = 1.35;
+    this.camera.position.x = 5.25;
     
 
     this.scene.add(this.camera);
@@ -90,7 +90,9 @@ export class EngineService implements OnDestroy {
         window.addEventListener('DOMContentLoaded', () => {
           this.render();
         });
+        
       }
+      
 
       window.addEventListener('resize', () => {
         this.resize();
