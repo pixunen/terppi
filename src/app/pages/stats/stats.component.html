@@ -1,15 +1,59 @@
-<h1> Tämä on Stat Page</h1>
+<div class="main">
+    <h1> Tämä on Stat Page</h1>
+
+    <div class="chart-wrapper">
+        <h3>Kaikki data</h3>
+        <canvas baseChart  
+            [datasets]="lineChartData" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+        <h3>Askeleet</h3>
+        <canvas baseChart  
+            [datasets]="lineChartData2" 
+            [labels]="lineChartLabels" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+        <h3>Viikon tavoitteet</h3>
+        <canvas baseChart  
+            [datasets]="lineChartData3" 
+            [labels]="lineChartLabels3" 
+            [options]="lineChartOptions"
+            [colors]="lineChartColors" 
+            [legend]="lineChartLegend" 
+            [chartType]="lineChartType3" 
+            [plugins]="lineChartPlugins">
+        </canvas>
+    </div>
+</div>
+
+<!----
 <button (click)="countSteps()">Laske Askeleet</button>
-<button (click)="stop()">Lopeta</button>
-<button (click)="getSteppes()">Hae Healthkit askeleet</button>
+<button (click)="stop()">Lopeta</button> 
 <div>
     Askeleet : {{StepcounterService.steps.numberOfSteps}}
     Kaikki tieto: {{StepcounterService.steps | json}}
 </div>
-<div>
-   Healthkit askeleet: {{ HealthkitService.object | json}}
-</div>
+
+<table>
+    <tr>Kolmen päivän askeleet</tr>
+    <tr><th>Toissapäivänä</th><th>Eillen</th><th>Tänään</th></tr>
+    <tr *ngFor="let steps of HealthkitService.object;">
+        <td>{{ steps[0] }}</td>
+        <td>{{ steps[1] }}</td>
+        <td>{{ steps[2] }}</td>
+     </tr>
+</table>
+
 <button (click)="addPhotoToGallery()">Click Me for Photo</button>
 <li *ngFor="let photo of photoService.photos;">
     <img src="{{photo.webviewPath}}">
-</li>
+</li> -->

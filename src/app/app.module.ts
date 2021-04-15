@@ -24,6 +24,7 @@ import { HobbiesComponent } from './pages/hobbies/hobbies.component';
 import { GoalsComponent } from './pages/goals/goals.component';
 import { TipsComponent } from './pages/tips/tips.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ChartsModule } from 'ng2-charts';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -65,8 +66,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MaterialsModule,
     ReactiveFormsModule,
+    ChartsModule,
   ],
-  providers: [ Pedometer, Health ],
+  providers: [ Pedometer, Health, ChartsModule ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
