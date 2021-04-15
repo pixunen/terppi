@@ -106,7 +106,7 @@ HomeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\n\n<div class=\"chart-wrapper\">\n    <canvas baseChart  \n        [datasets]=\"lineChartData\" \n        [labels]=\"lineChartLabels\" \n        [options]=\"lineChartOptions\"\n        [colors]=\"lineChartColors\" \n        [legend]=\"lineChartLegend\" \n        [chartType]=\"lineChartType\" \n        [plugins]=\"lineChartPlugins\">\n    </canvas>\n</div>\n<button (click)=\"countSteps()\">Laske Askeleet</button>\n<button (click)=\"stop()\">Lopeta</button>\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\n<div>\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\n    Kaikki tieto: {{StepcounterService.steps | json}}\n</div>\n\n<table>\n    <tr>Kolmen päivän askeleet</tr>\n    <tr><th>Toissapäivänä</th><th>Eillen</th><th>Tänään</th></tr>\n    <tr *ngFor=\"let steps of HealthkitService.object;\">\n        <td>{{ steps[0] }}</td>\n        <td>{{ steps[1] }}</td>\n        <td>{{ steps[2] }}</td>\n     </tr>\n</table>\n\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\n<li *ngFor=\"let photo of photoService.photos;\">\n    <img src=\"{{photo.webviewPath}}\">\n</li>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"main\">\n    <h1> Tämä on Stat Page</h1>\n\n    <div class=\"chart-wrapper\">\n        <h3>Kaikki data</h3>\n        <canvas baseChart  \n            [datasets]=\"lineChartData\" \n            [labels]=\"lineChartLabels\" \n            [options]=\"lineChartOptions\"\n            [colors]=\"lineChartColors\" \n            [legend]=\"lineChartLegend\" \n            [chartType]=\"lineChartType\" \n            [plugins]=\"lineChartPlugins\">\n        </canvas>\n        <h3>Askeleet</h3>\n        <canvas baseChart  \n            [datasets]=\"lineChartData2\" \n            [labels]=\"lineChartLabels\" \n            [options]=\"lineChartOptions\"\n            [colors]=\"lineChartColors\" \n            [legend]=\"lineChartLegend\" \n            [chartType]=\"lineChartType\" \n            [plugins]=\"lineChartPlugins\">\n        </canvas>\n        <h3>Viikon tavoitteet</h3>\n        <canvas baseChart  \n            [datasets]=\"lineChartData3\" \n            [labels]=\"lineChartLabels3\" \n            [options]=\"lineChartOptions\"\n            [colors]=\"lineChartColors\" \n            [legend]=\"lineChartLegend\" \n            [chartType]=\"lineChartType3\" \n            [plugins]=\"lineChartPlugins\">\n        </canvas>\n    </div>\n</div>\n\n<!----\n<button (click)=\"countSteps()\">Laske Askeleet</button>\n<button (click)=\"stop()\">Lopeta</button> \n<div>\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\n    Kaikki tieto: {{StepcounterService.steps | json}}\n</div>\n\n<table>\n    <tr>Kolmen päivän askeleet</tr>\n    <tr><th>Toissapäivänä</th><th>Eillen</th><th>Tänään</th></tr>\n    <tr *ngFor=\"let steps of HealthkitService.object;\">\n        <td>{{ steps[0] }}</td>\n        <td>{{ steps[1] }}</td>\n        <td>{{ steps[2] }}</td>\n     </tr>\n</table>\n\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\n<li *ngFor=\"let photo of photoService.photos;\">\n    <img src=\"{{photo.webviewPath}}\">\n</li> -->");
 
 /***/ }),
 
@@ -621,36 +621,44 @@ let StatsComponent = class StatsComponent {
         this.HealthkitService = HealthkitService;
         this.photoService = photoService;
         this.ChartsModule = ChartsModule;
+        this.bigdata = [];
+        this.weekdata = [];
         this.lineChartData = [
             { data: [1000, 800, 2000], label: 'Testi Askeleet' },
-            { data: this.HealthkitService.object, label: 'Askeleet' },
+            { data: [400, 500, 1200], label: 'Testi Uni' },
+            { data: [200, 1500, 200], label: 'Testi Ruoka' },
+        ];
+        this.lineChartData2 = [
+            { data: [], label: 'Askeleet' }
+        ];
+        this.lineChartData3 = [
+            { data: [], label: 'Tavoitteet' }
         ];
         this.lineChartLabels = ['Toissapäivänä', 'Eillen', 'Tänään'];
+        this.lineChartLabels3 = ['Ma', 'Ti', 'Ke', 'To', 'Pe', 'La', 'Su'];
         this.lineChartOptions = {
             responsive: true,
         };
         this.lineChartColors = [
             {
-                borderColor: 'rgba(54,54,54)',
-                backgroundColor: 'rgba(0,255,0,0.28)',
+                borderColor: 'rgba(255, 255, 255)',
+                backgroundColor: 'rgba(0,255,0,0.28)'
             },
         ];
         this.lineChartLegend = true;
         this.lineChartPlugins = [];
         this.lineChartType = 'line';
+        this.lineChartType3 = 'bar';
     }
     ngOnInit() {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             yield this.photoService.loadSaved();
             yield this.HealthkitService.saveData();
+            yield this.HealthkitService.saveWeek();
+            yield this.addData();
+            this.lineChartData2[0].data = this.bigdata;
+            this.lineChartData3[0].data = this.weekdata;
         });
-    }
-    getSteppes() {
-        console.log("Haetaan askeleet..");
-        //this.HealthkitService.getSteppes();
-        //this.HealthkitService.saveData();
-        //console.log(this.HealthkitService.object[0]);
-        //this.numeroita();
     }
     countSteps() {
         console.log("Counting Starts..");
@@ -662,6 +670,13 @@ let StatsComponent = class StatsComponent {
     }
     addPhotoToGallery() {
         this.photoService.addNewToGallery();
+    }
+    addData() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.bigdata = [].concat.apply([], this.HealthkitService.object);
+            this.weekdata = [].concat.apply([], this.HealthkitService.wobject);
+            //console.log(this.bigdata);
+        });
     }
 };
 StatsComponent.ctorParameters = () => [
@@ -951,7 +966,9 @@ let HealthkitService = class HealthkitService {
     constructor(health) {
         this.health = health;
         this.steppes = [];
+        this.wsteppes = [];
         this.object = [];
+        this.wobject = [];
     }
     getSteppes() {
         this.health.requestAuthorization([
@@ -974,6 +991,24 @@ let HealthkitService = class HealthkitService {
                     for (let value of this.steppes[key]) {
                         this.object[key] = this.object[key] || [];
                         this.object[key].push(value['value']);
+                    }
+                }
+            }
+        });
+    }
+    saveWeek() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            if (!this.wobject.length) {
+                this.health.queryAggregated({
+                    startDate: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000),
+                    endDate: new Date(),
+                    dataType: 'steps',
+                    bucket: 'day'
+                }).then(HealthData => this.wsteppes.push(HealthData));
+                for (let key of Object.keys(this.wsteppes)) {
+                    for (let value of this.wsteppes[key]) {
+                        this.wobject[key] = this.wobject[key] || [];
+                        this.wobject[key].push(value['value']);
                     }
                 }
             }
@@ -1491,7 +1526,7 @@ PhotoService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("body {\n  width: 100%;\n  position: fixed;\n  z-index: 2000;\n  display: flex;\n  justify-content: space-between;\n}\n\nimg {\n  width: 20%;\n  height: 20%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3N0YXRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0FBQ0o7O0FBRUE7RUFDSSxVQUFBO0VBQ0EsV0FBQTtBQUNKIiwiZmlsZSI6InN0YXRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7IFxuICAgIHdpZHRoOiAxMDAlO1xuICAgIHBvc2l0aW9uOiBmaXhlZDsgXG4gICAgei1pbmRleDogMjAwMDtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2Vlbjtcbn1cblxuaW1nIHtcbiAgICB3aWR0aDogMjAlO1xuICAgIGhlaWdodDogMjAlO1xufVxuIl19 */");
+/* harmony default export */ __webpack_exports__["default"] = ("img {\n  width: 20%;\n  height: 20%;\n}\n\nh1 {\n  color: white;\n}\n\n.main {\n  background-color: #1f1f1f;\n  color: white;\n  width: 100%;\n  position: fixed;\n  z-index: 1;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-evenly;\n  margin: auto;\n  height: 87%;\n  overflow: scroll;\n  overflow-x: hidden;\n}\n\n.chart-wrapper {\n  margin-top: 1rem;\n  margin-bottom: 50px;\n  margin-left: 10px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3N0YXRzLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNBO0VBQ0ksVUFBQTtFQUNBLFdBQUE7QUFBSjs7QUFHQTtFQUNJLFlBQUE7QUFBSjs7QUFFQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxlQUFBO0VBQ0EsVUFBQTtFQUNBLGFBQUE7RUFDQSxzQkFBQTtFQUNBLDZCQUFBO0VBQ0EsWUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtFQUFrQixrQkFBQTtBQUV0Qjs7QUFBQTtFQUNJLGdCQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtBQUdKIiwiZmlsZSI6InN0YXRzLmNvbXBvbmVudC5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXG5pbWcge1xuICAgIHdpZHRoOiAyMCU7XG4gICAgaGVpZ2h0OiAyMCU7XG59XG5cbmgxIHtcbiAgICBjb2xvcjogd2hpdGU7XG59XG4ubWFpbiB7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogcmdiKDMxLCAzMSwgMzEpO1xuICAgIGNvbG9yOiB3aGl0ZTtcbiAgICB3aWR0aDogMTAwJTtcbiAgICBwb3NpdGlvbjogZml4ZWQ7IFxuICAgIHotaW5kZXg6IDE7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBmbGV4LWRpcmVjdGlvbjogY29sdW1uO1xuICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtZXZlbmx5O1xuICAgIG1hcmdpbjogYXV0bztcbiAgICBoZWlnaHQ6IDg3JTtcbiAgICBvdmVyZmxvdzogc2Nyb2xsOyBvdmVyZmxvdy14OmhpZGRlbjtcbn1cbi5jaGFydC13cmFwcGVyIHtcbiAgICBtYXJnaW4tdG9wOiAxcmVtO1xuICAgIG1hcmdpbi1ib3R0b206IDUwcHg7XG4gICAgbWFyZ2luLWxlZnQ6IDEwcHg7XG59XG4iXX0= */");
 
 /***/ }),
 

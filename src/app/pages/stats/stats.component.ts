@@ -22,15 +22,14 @@ export class StatsComponent implements OnInit {
   async ngOnInit() {
     await this.photoService.loadSaved();
     await this.HealthkitService.saveData();
+    await this.HealthkitService.saveWeek();
+    await this.addData();
+    this.lineChartData2[0].data = this.bigdata;
+    this.lineChartData3[0].data = this.weekdata;
   }
+  bigdata: number[] = [];
+  weekdata: number[] = [];
   
-  getSteppes() {
-    console.log("Haetaan askeleet..")
-    //this.HealthkitService.getSteppes();
-    //this.HealthkitService.saveData();
-    //console.log(this.HealthkitService.object[0]);
-    //this.numeroita();
-  }
   countSteps() {
     console.log("Counting Starts..");
     this.StepcounterService.readSteps();
@@ -42,15 +41,29 @@ export class StatsComponent implements OnInit {
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
   }
+  public async addData() {
+    this.bigdata = [].concat.apply([], this.HealthkitService.object);
+    this.weekdata = [].concat.apply([], this.HealthkitService.wobject);
+
+    //console.log(this.bigdata);
+  }
   
 
   
   lineChartData: ChartDataSets[] = [
     { data: [1000, 800, 2000], label: 'Testi Askeleet' },
-    { data: this.HealthkitService.object, label: 'Askeleet' },
+    { data: [400, 500, 1200], label: 'Testi Uni' },
+    { data: [200, 1500, 200], label: 'Testi Ruoka' },
+  ];
+  lineChartData2: ChartDataSets[] = [
+    { data: [], label: 'Askeleet' }
+  ];
+  lineChartData3: ChartDataSets[] = [
+    { data: [], label: 'Tavoitteet' }
   ];
 
   lineChartLabels: Label[] = ['Toissapäivänä', 'Eillen', 'Tänään'];
+  lineChartLabels3: Label[] = ['Ma', 'Ti', 'Ke', 'To', 'Pe', 'La', 'Su'];
 
   lineChartOptions = {
     responsive: true,
@@ -58,14 +71,15 @@ export class StatsComponent implements OnInit {
 
   lineChartColors: Color[] = [
     {
-      borderColor: 'rgba(54,54,54)',
-      backgroundColor: 'rgba(0,255,0,0.28)',
+      borderColor: 'rgba(255, 255, 255)',
+      backgroundColor: 'rgba(0,255,0,0.28)'
     },
   ];
 
   lineChartLegend = true;
   lineChartPlugins = [];
   lineChartType = 'line';
+  lineChartType3 = 'bar';
 
 }
 
