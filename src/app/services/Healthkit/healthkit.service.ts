@@ -6,7 +6,7 @@ import { Health } from '@ionic-native/health/ngx';
 })
 export class HealthkitService {
 
-  constructor(private health: Health) { }
+  constructor(private health: Health) {}
   steppes:any = [];
   wsteppes:any = [];
   object:any = [];
@@ -14,17 +14,18 @@ export class HealthkitService {
   daySteps:any = [];
   odaySteps:any = [];
 
-  
-
-  getSteppes() {
-
+  getAuth() {
     this.health.requestAuthorization([
       'distance',
       {
         read: ['steps']
       }
     ]);
-    
+    return true;
+  }
+
+  getSteppes() {
+ 
     if(!this.odaySteps.length)
     {
       this.health.queryAggregated({

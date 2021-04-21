@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ios": "ionic build && ionic cap copy && ionic cap sync && ionic cap open ios",
-    "android": "ionic build && ionic cap copy && ionic cap sync && ionic cap open android"
+    "android": "ionic build && ionic cap copy && ionic cap sync & ionic cap open android"
   },
   "private": true,
   "dependencies": {

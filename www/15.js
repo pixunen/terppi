@@ -175,7 +175,7 @@ const Input = class {
     this.ionChange.emit({ value: this.value == null ? this.value : this.value.toString() });
   }
   componentWillLoad() {
-    this.inheritedAttributes = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.el, ['tabindex', 'title']);
+    this.inheritedAttributes = Object(_helpers_dd7e4b7b_js__WEBPACK_IMPORTED_MODULE_2__["i"])(this.el, ['aria-label', 'tabindex', 'title']);
   }
   connectedCallback() {
     this.emitStyle();

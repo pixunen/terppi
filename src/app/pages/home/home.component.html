@@ -47,7 +47,7 @@
                     </mat-expansion-panel-header>
                     <p>Tänne lisätiedot esim</p>
                     <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span> <br>
-                    <button mat-raised-button id="AddLiikuntaBtn">lisää</button>
+                    <button mat-raised-button id="AddLiikuntaBtn" (click)="test()">lisää</button>
                 </mat-expansion-panel>
             </mat-accordion> 
         </div>
