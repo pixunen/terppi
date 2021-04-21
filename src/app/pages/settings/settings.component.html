@@ -1,3 +1,34 @@
-<div class="settings-screen">
-    <h1 class="text_header"> Tämä on Asetukset Page</h1>
-</div>
+<div class="settings-screen" *ngIf="product">
+  <h1 class="h1">Settings</h1>
+    <table>
+      <tbody class="body">
+        <tr>
+          <td class="text_header">Käyttäjänimi:</td>
+          <td>
+            <input class="input" [(ngModel)]="product.userName" />
+          </td>
+        </tr>
+        <tr>
+          <td class="text_header">Ikä:</td>
+          <td>
+            <input class="input" [(ngModel)]="product.age" />
+          </td>
+        </tr>
+        <tr>
+          <td class="text_header">Sähköposti:</td>
+          <td>
+            <input class="input" [(ngModel)]="product.email" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <button class="button_save" (click)="saveProduct()">Save</button>
+      <button class="button_save" (click)="saveSettings()">
+        Save Settings
+        </button>
+        <button class="button_delete" (click)="deleteSettings()">
+            Delete Settings
+            </button>
+    </div>
+  </div>

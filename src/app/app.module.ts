@@ -25,6 +25,9 @@ import { GoalsComponent } from './pages/goals/goals.component';
 import { TipsComponent } from './pages/tips/tips.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
+import { FormsModule } from '@angular/forms';
+import { AppSettingsService } from "./pages/settings/shared/appsettings.service";
+import { HttpClientModule } from '@angular/common/http';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -43,6 +46,8 @@ import { ChartsModule } from 'ng2-charts';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot([
       {path: 'home', component: HomeComponent},
@@ -68,7 +73,7 @@ import { ChartsModule } from 'ng2-charts';
     ReactiveFormsModule,
     ChartsModule,
   ],
-  providers: [ Pedometer, Health, ChartsModule ],
+  providers: [ Pedometer, Health, ChartsModule, AppSettingsService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
