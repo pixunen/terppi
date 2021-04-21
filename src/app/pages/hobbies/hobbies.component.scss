@@ -1,0 +1,22 @@
+.hobbies-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    margin: auto;  
+    overflow: scroll; overflow-x:hidden;
+    background-color: rgb(31, 31, 31);
+}
+.input{
+    margin-top: 30px;
+    position:relative;
+}
+.text {
+    color: seashell;
+}
+.text_header{
+    color: seashell;
+}
+.text_choise{
+    color: seashell;
+    font-size: medium;
+}

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { StepcounterService } from '../../services/Stepcounter/stepcounter.service';
+import { HealthkitService } from '../../services/Healthkit/healthkit.service';
 
 
 @Component({
@@ -9,36 +11,68 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HomeComponent implements OnInit {
+  // precentages and radiusses of the spinners - the radius is the raadius of the progress circle
+  // nukkuminen
+  sleepRadi = 90;
+  daySleepHoursGoal: any;
+  daySleepHours: any;
+  daySleepPre: any;
 
-  // get the needet data so we can calc the precentages.
-  constructor() {
- 
+  // syöminen  
+  eatRadi = 69;
+  dayEatGoal: any; // we need to get this from somewhere where it is stored
+  dayEaten: any;
+  eatPre: any;
+
+  // liikunta
+  stepsRadi = 52;
+  dayStepGoal: any; // we need to get this from somewhere where it is stored
+  daySteps: any; // get 
+  stepPre: any;
+
+  // Text areas
+  liikuntaScores: number | string;
+  ruokaScores: number | string;
+  nukkumisScore: number | string;
+  
+  // we just initialize the text areas in constructor because we have to or angular is mad..
+  // this might be improved by changing the way how the text areas data is send to the html but it is open problem atm
+  constructor(public StepcounterService: StepcounterService, public HealthkitService: HealthkitService) {
+    this.liikuntaScores = `${this.daySteps} / ${this.dayStepGoal} `;
+    this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
+    this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
    }
 
   ngOnInit(): void {
-    this.animateSpinners(this.precentages, this.radiusses);
+
+    // this value needs to be gotten from the right place
+    this.dayStepGoal = 1000;
+    this.dayEatGoal = 500;
+    this.daySleepHoursGoal = 8;
+    
+    this.daySteps = this.HealthkitService.steppes;
+    console.log(this.daySteps);
+    // just hardcoding the value until the service workspace
+    this.daySteps = 400;
+    this.dayEaten = 280;
+    this.daySleepHours = 7;
+
+    if(this.dayStepGoal === 0 || this.dayEatGoal === 0 || this.dayStepGoal === 0){ // error handling we should not end here
+    }
+    this.stepPre = ((this.daySteps/this.dayStepGoal)*100);
+    this.eatPre = ((this.dayEaten/this.dayEatGoal)*100);
+    this.daySleepPre = ((this.daySleepHours/this.daySleepHoursGoal)*100);
+
+    //display the textContent
+    this.liikuntaScores = `${this.daySteps} / ${this.dayStepGoal} `;
+    this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
+    this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
+
+
+    let precentages = [this.daySleepPre, this.eatPre, this.stepPre];
+    let radiusses = [this.sleepRadi, this.eatRadi, this.stepsRadi];
+    this.animateSpinners(precentages, radiusses);
   }
-
-  // precentages and radiusses of the spinners
-  spinner1 = 100;
-  radius1 = 90;
-
-  spinner2 = 60;
-  radius2 = 69;
-
-  spinner3 = 40;
-  radius3 = 52;
-    //console.log(spinner);
-
-  precentages = [this.spinner1, this.spinner2, this.spinner3];
-  radiusses = [this.radius1, this.radius2, this.radius3];
-  
-
-  liikuntaScores: number | string  = `${this.spinner1} / 100`;
-
-  ruokaScores: number | string = `${this.spinner2} / 100`;
-
-  nukkumisScore: number | string = `${this.spinner3} / 100`;
 
   // function to animate the svg spinners
   animateSpinners(precentages: number[], radiusses: number[]) {

@@ -1,0 +1,41 @@
+.settings-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed; 
+    margin: auto;  
+    overflow: scroll; overflow-x:hidden;
+    background-color: rgb(31, 31, 31)
+}
+.h1 {
+    text-align: center;
+    color: seashell;
+}
+.text_header{
+    position: relative;
+    left: 30%;
+    text-align: left;
+    color: seashell;
+}
+.button_save {
+    position: relative;
+    left: 5%;
+    width: 110px;
+    height: 50px;
+    background-color: rgb(59, 150, 59);
+    color: seashell;
+    border-color: green;
+}
+.button_delete {
+    position: relative;
+    left: 5%;
+    width: 110px;
+    height: 50px;
+    background-color: rgb(189, 52, 52);
+    color: seashell;
+    border-color: red;
+}
+.input{
+    margin-left: 50%;
+    color: seashell;
+    background-color: rgb(31, 31, 31);
+}

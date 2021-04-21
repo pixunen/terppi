@@ -8,7 +8,11 @@ export class HealthkitService {
 
   constructor(private health: Health) { }
   steppes:any = [];
-  object:any = {};
+  wsteppes:any = [];
+  object:any = [];
+  wobject:any = [];
+
+  
 
   getSteppes() {
     this.health.requestAuthorization([
@@ -17,23 +21,44 @@ export class HealthkitService {
         read: ['steps']
       }
     ]);
-  }
-  saveData() {
-    this.health.queryAggregated({
-      startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
-      endDate: new Date(), // now
-      dataType: 'steps',
-      bucket: 'day'
-    }).then(HealthData => this.steppes.push(HealthData));
-
     
-    for (let key of Object.keys(this.steppes)) { 
+  }
+  public async saveData() {
+    if(!this.object.length) {
+      this.health.queryAggregated({
+        startDate: new Date(new Date().getTime() - 3 * 24 * 60 * 60 * 1000), // three days ago
+        endDate: new Date(), // now
+        dataType: 'steps',
+        bucket: 'day'
+      }).then(HealthData => this.steppes.push(HealthData));
+  
+      for (let key of Object.keys(this.steppes)) { 
         for (let value of this.steppes[key]) { 
-            this.object[key] = this.object[key] || []
-            this.object[key].push(
-                value['value']
-            )
+          this.object[key] = this.object[key] || []
+          this.object[key].push(
+            value['value']
+          );
         } 
+      }  
+    } 
+  }
+  public async saveWeek() {
+    if(!this.wobject.length) {
+      this.health.queryAggregated({
+        startDate: new Date(new Date().getTime() - 7 * 24 * 60 * 60 * 1000), // three days ago
+        endDate: new Date(), // now
+        dataType: 'steps',
+        bucket: 'day'
+      }).then(HealthData => this.wsteppes.push(HealthData));
+  
+      for (let key of Object.keys(this.wsteppes)) { 
+        for (let value of this.wsteppes[key]) { 
+          this.wobject[key] = this.wobject[key] || []
+          this.wobject[key].push(
+            value['value']
+          );
+        } 
+      }  
     } 
   }
 }
