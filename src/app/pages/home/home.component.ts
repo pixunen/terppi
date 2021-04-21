@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StepcounterService } from '../../services/Stepcounter/stepcounter.service';
 import { HealthkitService } from '../../services/Healthkit/healthkit.service';
-
+import { PhotoService } from '../../services/Photo/photo.service';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   
   // we just initialize the text areas in constructor because we have to or angular is mad..
   // this might be improved by changing the way how the text areas data is send to the html but it is open problem atm
-  constructor(public StepcounterService: StepcounterService, public HealthkitService: HealthkitService) {
+  constructor(public StepcounterService: StepcounterService, public HealthkitService: HealthkitService, public photoService: PhotoService,) {
     this.liikuntaScores = `${this.daySteps} / ${this.dayStepGoal} `;
     this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
     this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
@@ -51,11 +51,11 @@ export class HomeComponent implements OnInit {
     this.daySleepHoursGoal = 8;
 
     this.HealthkitService.getSteppes();
-    this.daySteps = this.HealthkitService.daySteps;
+    this.daySteps = Math.floor(this.HealthkitService.odaySteps);
     console.log(this.daySteps);
     console.log(this.HealthkitService.daySteps[0]);
     // just hardcoding the value until the service workspace
-    this.daySteps = 400;
+    //this.daySteps = 400;
     this.dayEaten = 280;
     this.daySleepHours = 7;
 
@@ -106,5 +106,9 @@ export class HomeComponent implements OnInit {
     } else {
         return;
     }
+  }
+
+  addPhotoToGallery() {
+    this.photoService.addNewToGallery();
   }
 }

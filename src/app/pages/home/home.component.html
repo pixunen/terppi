@@ -67,7 +67,8 @@
                     </mat-expansion-panel-header>
                     <p>Tänne lisätiedot esim</p>
                     <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span> <br>
-                    <button mat-raised-button id="AddRuokaBtn">lisää</button>
+                    <button mat-raised-button id="AddRuokaBtn">Lisää</button>
+                    <button mat-raised-button id="AddRuokaBtn2" (click)="addPhotoToGallery()">Kamera</button>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>

@@ -12,7 +12,7 @@ steps: any = [];
 constructor(private pedometer: Pedometer, private ngZone: NgZone) {
   this.readSteps();
         setInterval(()=>{
-           console.log('read in a sec')
+           //console.log('read in a sec')
         },1000)
  }
 

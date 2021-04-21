@@ -12,6 +12,7 @@ export class HealthkitService {
   object:any = [];
   wobject:any = [];
   daySteps:any = [];
+  odaySteps:any = [];
 
   
 
@@ -24,13 +25,25 @@ export class HealthkitService {
       }
     ]);
     
-    this.health.queryAggregated({
-      startDate: new Date(), // three days ago
-      endDate: new Date(), // now
-      dataType: 'steps',
-      bucket: 'day'
-    }).then(HealthData => this.daySteps.push(HealthData));
-
+    if(!this.odaySteps.length)
+    {
+      this.health.queryAggregated({
+        startDate: new Date(new Date().getTime() - 0 * 24 * 60 * 60 * 1000), // three days ago
+        endDate: new Date(), // now
+        dataType: 'steps',
+        bucket: 'day'
+      }).then(HealthData => this.daySteps.push(HealthData));
+  
+      for (let key of Object.keys(this.daySteps)) { 
+        for (let value of this.daySteps[key]) { 
+          this.odaySteps[key] = this.odaySteps[key] || []
+          this.odaySteps[key].push(
+            value['value']
+          );
+          }
+        }
+    }
+    
   }
 
   public async saveData() {
