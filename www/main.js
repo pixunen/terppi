@@ -12,28 +12,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GameComponent", function() { return GameComponent; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! raw-loader!./game.component.html */ "WWYX");
-<<<<<<< HEAD
-/* harmony import */ var _game_component_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./game.component.scss */ "Xa7A");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/core */ "fXoL");
-
-
-
-
-let GameComponent = class GameComponent {
-    constructor() { }
-    ngOnInit() {
-    }
-};
-GameComponent.ctorParameters = () => [];
-GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'app-game',
-        template: _raw_loader_game_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_game_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
-    })
-], GameComponent);
-
-=======
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _engine_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./engine.service */ "Nd77");
 
@@ -62,7 +40,6 @@ GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     })
 ], GameComponent);
 
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
 
 
 /***/ }),
@@ -74,15 +51,7 @@ GameComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-<<<<<<< HEAD
-module.exports = __webpack_require__(/*! B:\Ohjelmointi\WebWorkshop\terppiV2\terppiofficial\src\main.ts */"zUnb");
-=======
-module.exports = __webpack_require__(/*! C:\Users\niitt\Desktop\uusiterppi\terppiofficial\src\main.ts */"zUnb");
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
-
-
 /***/ }),
-
 /***/ "1LmZ":
 /*!**********************************************!*\
   !*** ./src/app/pages/home/home.component.ts ***!
@@ -166,11 +135,7 @@ HomeComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-<<<<<<< HEAD
-/* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\n<button (click)=\"countSteps()\">Laske Askeleet</button>\n<button (click)=\"stop()\">Lopeta</button>\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\n<div>\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\n    Kaikki tieto: {{StepcounterService.steps | json}}\n</div>\n<div>\n   Healthkit askeleet: {{ HealthkitService.object | json}}\n</div>\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\n<li *ngFor=\"let photo of photoService.photos;\">\n    <img src=\"{{photo.webviewPath}}\">\n</li>");
-=======
 /* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Stat Page</h1>\r\n<button (click)=\"countSteps()\">Laske Askeleet</button>\r\n<button (click)=\"stop()\">Lopeta</button>\r\n<button (click)=\"getSteppes()\">Hae Healthkit askeleet</button>\r\n<div>\r\n    Askeleet : {{StepcounterService.steps.numberOfSteps}}\r\n    Kaikki tieto: {{StepcounterService.steps | json}}\r\n</div>\r\n<div>\r\n   Healthkit askeleet: {{ HealthkitService.object | json}}\r\n</div>\r\n<button (click)=\"addPhotoToGallery()\">Click Me for Photo</button>\r\n<li *ngFor=\"let photo of photoService.photos;\">\r\n    <img src=\"{{photo.webviewPath}}\">\r\n</li>");
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
 
 /***/ }),
 
@@ -478,7 +443,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/Stepcounter/stepcounter.service */ "eu9t");
 /* harmony import */ var _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/Healthkit/healthkit.service */ "fmiJ");
 /* harmony import */ var _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/Photo/photo.service */ "vyil");
-<<<<<<< HEAD
 
 
 
@@ -528,57 +492,6 @@ StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     })
 ], StatsComponent);
 
-=======
-
-
-
-
-
-
-
-let StatsComponent = class StatsComponent {
-    constructor(StepcounterService, HealthkitService, photoService) {
-        this.StepcounterService = StepcounterService;
-        this.HealthkitService = HealthkitService;
-        this.photoService = photoService;
-        this.askeleet = "";
-    }
-    ngOnInit() {
-        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
-            yield this.photoService.loadSaved();
-        });
-    }
-    getSteppes() {
-        console.log("Haetaan askeleet..");
-        this.HealthkitService.getSteppes();
-        this.HealthkitService.saveData();
-    }
-    countSteps() {
-        console.log("Counting Starts..");
-        this.StepcounterService.readSteps();
-    }
-    stop() {
-        console.log("Counting Ends");
-        this.StepcounterService.stopSteps();
-    }
-    addPhotoToGallery() {
-        this.photoService.addNewToGallery();
-    }
-};
-StatsComponent.ctorParameters = () => [
-    { type: _services_Stepcounter_stepcounter_service__WEBPACK_IMPORTED_MODULE_4__["StepcounterService"] },
-    { type: _services_Healthkit_healthkit_service__WEBPACK_IMPORTED_MODULE_5__["HealthkitService"] },
-    { type: _services_Photo_photo_service__WEBPACK_IMPORTED_MODULE_6__["PhotoService"] }
-];
-StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_3__["Component"])({
-        selector: 'app-stats',
-        template: _raw_loader_stats_component_html__WEBPACK_IMPORTED_MODULE_1__["default"],
-        styles: [_stats_component_scss__WEBPACK_IMPORTED_MODULE_2__["default"]]
-    })
-], StatsComponent);
-
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
 
 
 /***/ }),
@@ -592,11 +505,7 @@ StatsComponent = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-<<<<<<< HEAD
-/* harmony default export */ __webpack_exports__["default"] = ("<main-nav>\n  <router-outlet></router-outlet>\n  <app-bottom-nav></app-bottom-nav>\n</main-nav>\n\n\n");
-=======
 /* harmony default export */ __webpack_exports__["default"] = ("<main-nav>\r\n  <router-outlet></router-outlet>\r\n  <app-bottom-nav></app-bottom-nav>\r\n</main-nav>\r\n\r\n\r\n\r\n");
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
 
 /***/ }),
 
@@ -613,24 +522,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ("<h1> Tämä on Game Page</h1>\n\n");
 
 /***/ }),
-
-/***/ "Xa7A":
-/*!************************************************!*\
-  !*** ./src/app/pages/game/game.component.scss ***!
-  \************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("body {\n  width: 100%;\n  position: fixed;\n  z-index: 2000;\n  display: flex;\n  justify-content: space-between;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uXFwuLlxcLi5cXC4uXFxnYW1lLmNvbXBvbmVudC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7RUFDQSxhQUFBO0VBQ0EsYUFBQTtFQUNBLDhCQUFBO0FBQ0oiLCJmaWxlIjoiZ2FtZS5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImJvZHkgeyBcbiAgICB3aWR0aDogMTAwJTtcbiAgICBwb3NpdGlvbjogZml4ZWQ7IFxuICAgIHotaW5kZXg6IDIwMDA7XG4gICAgZGlzcGxheTogZmxleDtcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47XG59Il19 */");
-=======
-/* harmony default export */ __webpack_exports__["default"] = ("  <div class=\"engine-wrapper\">\r\n    <canvas #rendererCanvas id=\"renderCanvas\"></canvas>\r\n  </div>\r\n");
->>>>>>> 3c457f083dae62b761045e747f50bb68532034de
-
-/***/ }),
-
-/***/ "ZAI4":
 /*!*******************************!*\
   !*** ./src/app/app.module.ts ***!
   \*******************************/
