@@ -38,12 +38,15 @@
 
 <div class="hobbies-screen">
   <h3 class="text_header">Sinun Harrastuksesi: <span>{{displayText}}</span></h3>
-</div>
-<div>
-<mat-form-field>
-  <input class="input" matInput placeholder="Kirjoita harrastuksesi" #input><br>
-</mat-form-field>
-</div>
-<div>
-<button mat-button color="primary" (click)="displayText = input.value">Tallenna</button>
+
+  <form action="" id="hobbyInput">
+    <mat-form-field>
+      <input class="input" matInput placeholder="Kirjoita harrastuksesi" #input><br>
+    </mat-form-field>
+  </form>
+
+
+  <div>
+    <button mat-button color="primary" (click)="displayText = input.value">Tallenna</button>
+  </div>
 </div>
