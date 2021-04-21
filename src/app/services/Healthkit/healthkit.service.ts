@@ -16,13 +16,13 @@ export class HealthkitService {
   
 
   getSteppes() {
-    /*this.health.requestAuthorization([
+
+    this.health.requestAuthorization([
       'distance',
       {
         read: ['steps']
       }
     ]);
-    */
     
     this.health.queryAggregated({
       startDate: new Date(), // three days ago
