@@ -26,10 +26,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
 # FURTHER DEVELOPMENT IDEAS
-Machine Learning - picture recognition from phone camera
-iOS-safe zone
-Settings tab
-User service + Angular Resolve
-RouteProvider + routing
-Splash Screen from ionic
-Gameficication
+<ul>
+<li>Machine Learning - picture recognition from phone camera</li>
+<li>iOS-safe zone</li>
+<li>Settings tab</li>
+<li>User service + Angular Resolve/li>
+<li>RouteProvider + routing</li>
+<li>Splash Screen from ionic</li>
+<li>Gameficication</li>
+</ul>
+
+
+
+
+
+
