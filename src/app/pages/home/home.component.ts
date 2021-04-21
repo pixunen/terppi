@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   // liikunta
   stepsRadi = 52;
   dayStepGoal: any; // we need to get this from somewhere where it is stored
-  daySteps: any; // get 
+  daySteps: any = []; // get 
   stepPre: any;
 
   // Text areas
@@ -49,9 +49,11 @@ export class HomeComponent implements OnInit {
     this.dayStepGoal = 1000;
     this.dayEatGoal = 500;
     this.daySleepHoursGoal = 8;
-    
-    this.daySteps = this.HealthkitService.steppes;
+
+    this.HealthkitService.getSteppes();
+    this.daySteps = this.HealthkitService.daySteps;
     console.log(this.daySteps);
+    console.log(this.HealthkitService.daySteps[0]);
     // just hardcoding the value until the service workspace
     this.daySteps = 400;
     this.dayEaten = 280;
