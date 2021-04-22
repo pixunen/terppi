@@ -1,8 +1,0 @@
-{
-  "dependencies": {
-    "@angular/material": "^11.2.6"
-  },
-  "devDependencies": {
-    "typescript": "^4.1.5"
-  }
-}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StepcounterService } from '../../services/Stepcounter/stepcounter.service';
 import { HealthkitService } from '../../services/Healthkit/healthkit.service';
 import { PhotoService } from '../../services/Photo/photo.service';
-import { ChartDataSets, ChartOptions } from 'chart.js';
+import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
 import { Color, Label, ChartsModule } from 'ng2-charts';
 
 
@@ -14,11 +14,11 @@ import { Color, Label, ChartsModule } from 'ng2-charts';
 })
 export class StatsComponent implements OnInit {
   constructor(public StepcounterService: StepcounterService,
-    public HealthkitService: HealthkitService, 
-    public photoService: PhotoService, 
+    public HealthkitService: HealthkitService,
+    public photoService: PhotoService,
     public ChartsModule: ChartsModule) { }
 
-    
+
   async ngOnInit() {
     await this.photoService.loadSaved();
     await this.HealthkitService.saveData();
@@ -29,7 +29,7 @@ export class StatsComponent implements OnInit {
   }
   bigdata: number[] = [];
   weekdata: number[] = [];
-  
+
   countSteps() {
     console.log("Counting Starts..");
     this.StepcounterService.readSteps();
@@ -47,9 +47,9 @@ export class StatsComponent implements OnInit {
 
     //console.log(this.bigdata);
   }
-  
 
-  
+
+
   lineChartData: ChartDataSets[] = [
     { data: [1000, 800, 2000], label: 'Testi Askeleet' },
     { data: [400, 500, 1200], label: 'Testi Uni' },
@@ -78,8 +78,8 @@ export class StatsComponent implements OnInit {
 
   lineChartLegend = true;
   lineChartPlugins = [];
-  lineChartType = 'line';
-  lineChartType3 = 'bar';
+  lineChartType: ChartType = 'line';
+  lineChartType3: ChartType = 'bar';
 
 }
 

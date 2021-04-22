@@ -28,6 +28,8 @@ import { ChartsModule } from 'ng2-charts';
 import { FormsModule } from '@angular/forms';
 import { AppSettingsService } from "./pages/settings/shared/appsettings.service";
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 // Jos lisäätte materiaaleja tehkää se materials moduleen kiitoos :)
 // pitää joskus siirtää tästä ne materiaalit kans sinne mut oon liia laiska tekee atm
 
@@ -72,6 +74,12 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialsModule,
     ReactiveFormsModule,
     ChartsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the app is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [ Pedometer, Health, ChartsModule, AppSettingsService ],
   bootstrap: [AppComponent]

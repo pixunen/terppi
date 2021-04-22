@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "ios": "ionic build && ionic cap copy && ionic cap sync && ionic cap open ios",
-    "android": "ionic build && ionic cap copy && ionic cap sync && ionic cap open android"
+    "android": "ionic build && ionic cap copy && ionic cap sync & ionic cap open android"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,7 @@
     "@angular/platform-browser": "~11.2.7",
     "@angular/platform-browser-dynamic": "~11.2.7",
     "@angular/router": "~11.2.7",
+    "@angular/service-worker": "~11.2.7",
     "@capacitor/android": "^2.4.7",
     "@capacitor/core": "2.4.7",
     "@capacitor/ios": "^2.4.7",
