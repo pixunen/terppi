@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Product } from '../settings/product';
 import { AppSettings } from '../settings/shared/appsettings';
 import { AppSettingsService } from '../settings/shared/appsettings.service';
+import { HealthkitService } from '../../services/Healthkit/healthkit.service';
 
 @Component({
     selector: "product-detail", templateUrl: "./settings.component.html", styleUrls: ['./settings.component.scss']
@@ -11,7 +12,7 @@ import { AppSettingsService } from '../settings/shared/appsettings.service';
       
     
 
-    constructor(private appSettingsService: AppSettingsService) {
+    constructor(private appSettingsService: AppSettingsService, public HealthkitService: HealthkitService) {
         
     }
 
@@ -27,6 +28,9 @@ import { AppSettingsService } from '../settings/shared/appsettings.service';
         });
       }
 
+    getAuth() {
+      this.HealthkitService.getAuth()
+    }
     saveSettings(): void {
         this.settings.defaultName = this.product.userName;
         this.settings.defaultAge = this.product.age;
