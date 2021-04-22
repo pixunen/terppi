@@ -106,6 +106,8 @@ let HomeComponent = class HomeComponent {
         }
         */
     }
+    // solve how to ask auth only once on android device
+    // this can be removed, but remove the event from the .html as well
     test() {
         this.HealthkitService.getAuth();
     }
@@ -136,7 +138,8 @@ let HomeComponent = class HomeComponent {
         let radiusses = [this.sleepRadi, this.eatRadi, this.stepsRadi];
         this.animateSpinners(precentages, radiusses);
     }
-    // function to animate the svg spinners
+    // function to animate the svg spinners 
+    // improvement idea: maybe do the calculations outside of angular (ngZone.runOutsideAngular)?
     animateSpinners(precentages, radiusses) {
         let radius = 0;
         let circumference = 0;

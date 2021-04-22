@@ -6,6 +6,17 @@
     overflow: scroll; overflow-x:hidden;
     background-color: rgb(31, 31, 31)
 }
-.text_header{
+.text-wrapper{
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+.headers{
     color: seashell;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+.span{
+    color: seashell;
+    text-align: center;
 }

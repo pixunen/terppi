@@ -26,8 +26,7 @@ export class HealthkitService {
 
   getSteppes() {
  
-    if(!this.odaySteps.length)
-    {
+    if(!this.odaySteps.length){
       this.health.queryAggregated({
         startDate: new Date(new Date().getTime() - 0 * 24 * 60 * 60 * 1000), // three days ago
         endDate: new Date(), // now
@@ -41,10 +40,9 @@ export class HealthkitService {
           this.odaySteps[key].push(
             value['value']
           );
-          }
         }
+      }
     }
-    
   }
 
   public async saveData() {

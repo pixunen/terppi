@@ -7,7 +7,6 @@ import { PhotoService } from '../../services/Photo/photo.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  //CommonModule
 })
 
 export class HomeComponent implements OnInit {
@@ -30,8 +29,6 @@ export class HomeComponent implements OnInit {
   daySteps: any = []; // get 
   stepPre: any;
 
-  auth:boolean = false;
-
   // Text areas
   liikuntaScores: number | string;
   ruokaScores: number | string;
@@ -43,12 +40,7 @@ export class HomeComponent implements OnInit {
     this.liikuntaScores = `${this.daySteps} / ${this.dayStepGoal} `;
     this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
     this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
-    // auth to read steps
-    /*
-    if(!this.auth){
-      this.auth = this.HealthkitService.getAuth()
-    } 
-    */   
+  
    }
 
    // solve how to ask auth only once on android device
@@ -99,12 +91,10 @@ export class HomeComponent implements OnInit {
     // circumference is the length of the circle
     // strokeDashOffset is the current offset calculated based on the precentage <-- which is calculated based on set goals and...
     for (let i = 0; i < precentages.length; i++) {
-        
         let spinner = (<HTMLElement>document.getElementById("circle-complete-"+(i+1)));
         radius = radiusses[i];
         circumference = 2 * Math.PI * radius;
         strokeDashOffset = circumference - ((precentages[i] * circumference) / 100);
-        //spinner.style.strokeDashoffset = "0";
         this.animateProgress(spinner, circumference, strokeDashOffset);
     }
   }
@@ -112,7 +102,6 @@ export class HomeComponent implements OnInit {
   animateProgress(element: HTMLElement, pathL: number, maxPath: number) {
 
     pathL -= 2;
-
     element.style.strokeDashoffset = pathL.toString();
 
     if (pathL > maxPath){

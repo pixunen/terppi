@@ -129,6 +129,13 @@ svg{
         #mat-expansion-panel-header-1{
             background-color: rgb(247, 221, 114);
         }
+        #AddRuokaBtn{
+            padding: 0;
+        }
+        #AddRuokaBtn2 {
+            margin-left: 7px;
+            padding: 0;
+        }
     }
     #nukkuminenScoresID {
         &.nukkuminen-scores {
@@ -142,110 +149,6 @@ svg{
         }
     }
 }
-/*
-:host #liikuntaScoresID {
-    .mat-expansion-panel{
-        background-color: rgb(93, 211, 158);
-    }
-    #mat-expansion-panel-header-0{
-        background-color: rgb(93, 211, 158);
-    }
-}
-
-:host #ruokailuScoresID {
-    .mat-expansion-panel{
-        background-color: rgb(247, 221, 114);
-    }
-    #mat-expansion-panel-header-1{
-        background-color: rgb(247, 221, 114);
-    }
-}
-
-:host #nukkuminenScoresID {
-    &.nukkuminen-scores {
-        margin-bottom: 2rem;
-    }
-    .mat-expansion-panel{
-        background-color: rgb(58, 174, 216);
-    }
-    #mat-expansion-panel-header-2{
-        background-color: rgb(58, 174, 216);
-    }
-}
-
-
-.footer {
-    z-index: 0;
-    position: relative;
-    height: 10%;
-    width: 100%;
-}
-*/
-/*
-.home-screen {
-    //width: 100 %;
-    //margin-left: auto;
-    //margin-right: auto;
-    width: 100%;
-    position: fixed; 
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    margin: auto;
-    height: 87%;
-    overflow: scroll; overflow-x:hidden;
-    //justify-content: space-between;
-    background-color: rgb(31, 31, 31)
-    //border-radius: 12px;
-}
-
-
-.home-screen-welcome {
-    text-align: center;
-    margin-top: 2rem;
-    
-}
-
-.home-screen-text-wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    height: 4rem;
-    max-width: 40%;
-    padding-top: 1.5rem;
-    //background-color:seagreen;
-    color: seashell;
-    margin-bottom: 42px;
-    border-radius: 12px;
-
-}
-*/
-
-
-/*
-mat-progress-spinner {
-    
-    ::ng-deep circle {
-        stroke: #33dd82;
-    }
-}
-*/
-
-/*
-.spinner-scores-wrapper{
-    color: seashell;
-    text-align: center;
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
-}
-*/
-
-
-
-
-
-
 
 // todo säädä kaikki toimimaan isoimmilla näytöillä
 @media(min-width: 760px){

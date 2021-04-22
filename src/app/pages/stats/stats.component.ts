@@ -48,7 +48,7 @@ export class StatsComponent implements OnInit {
     //console.log(this.bigdata);
   }
   
-
+  
   
   lineChartData: ChartDataSets[] = [
     { data: [1000, 800, 2000], label: 'Testi Askeleet' },
