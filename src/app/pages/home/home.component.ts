@@ -7,7 +7,6 @@ import { PhotoService } from '../../services/Photo/photo.service';
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  //CommonModule
 })
 
 export class HomeComponent implements OnInit {
@@ -41,10 +40,16 @@ export class HomeComponent implements OnInit {
     this.liikuntaScores = `${this.daySteps} / ${this.dayStepGoal} `;
     this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
     this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
+  
+   }
+
+   // solve how to ask auth only once on android device
+   // this can be removed, but remove the event from the .html as well
+   test(){
+    this.HealthkitService.getAuth()
    }
 
   ngOnInit(): void {
-
     // this value needs to be gotten from the right place
     this.dayStepGoal = 1000;
     this.dayEatGoal = 500;
@@ -52,8 +57,8 @@ export class HomeComponent implements OnInit {
 
     this.HealthkitService.getSteppes();
     this.daySteps = Math.floor(this.HealthkitService.odaySteps);
-    console.log(this.daySteps);
-    console.log(this.HealthkitService.daySteps[0]);
+    //console.log(this.daySteps);
+    //console.log(this.HealthkitService.daySteps[0]);
     // just hardcoding the value until the service workspace
     //this.daySteps = 400;
     this.dayEaten = 280;
@@ -70,13 +75,14 @@ export class HomeComponent implements OnInit {
     this.ruokaScores = `${this.dayEaten} / ${this.dayEatGoal}`;
     this.nukkumisScore = `${this.daySleepHours} / ${this.daySleepHoursGoal}`;
 
-
+    // animateSpinners animates the progress bar with this given data
     let precentages = [this.daySleepPre, this.eatPre, this.stepPre];
     let radiusses = [this.sleepRadi, this.eatRadi, this.stepsRadi];
     this.animateSpinners(precentages, radiusses);
   }
 
-  // function to animate the svg spinners
+  // function to animate the svg spinners 
+  // improvement idea: maybe do the calculations outside of angular (ngZone.runOutsideAngular)?
   animateSpinners(precentages: number[], radiusses: number[]) {
     let radius = 0;
     let circumference = 0;
@@ -85,12 +91,10 @@ export class HomeComponent implements OnInit {
     // circumference is the length of the circle
     // strokeDashOffset is the current offset calculated based on the precentage <-- which is calculated based on set goals and...
     for (let i = 0; i < precentages.length; i++) {
-        
         let spinner = (<HTMLElement>document.getElementById("circle-complete-"+(i+1)));
         radius = radiusses[i];
         circumference = 2 * Math.PI * radius;
         strokeDashOffset = circumference - ((precentages[i] * circumference) / 100);
-        //spinner.style.strokeDashoffset = "0";
         this.animateProgress(spinner, circumference, strokeDashOffset);
     }
   }
@@ -98,7 +102,6 @@ export class HomeComponent implements OnInit {
   animateProgress(element: HTMLElement, pathL: number, maxPath: number) {
 
     pathL -= 2;
-
     element.style.strokeDashoffset = pathL.toString();
 
     if (pathL > maxPath){

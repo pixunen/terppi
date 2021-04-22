@@ -6,7 +6,7 @@ import { Health } from '@ionic-native/health/ngx';
 })
 export class HealthkitService {
 
-  constructor(private health: Health) { }
+  constructor(private health: Health) {}
   steppes:any = [];
   wsteppes:any = [];
   object:any = [];
@@ -14,19 +14,19 @@ export class HealthkitService {
   daySteps:any = [];
   odaySteps:any = [];
 
-  
-
-  getSteppes() {
-
+  getAuth() {
     this.health.requestAuthorization([
       'distance',
       {
         read: ['steps']
       }
     ]);
-    
-    if(!this.odaySteps.length)
-    {
+    return true;
+  }
+
+  getSteppes() {
+ 
+    if(!this.odaySteps.length){
       this.health.queryAggregated({
         startDate: new Date(new Date().getTime() - 0 * 24 * 60 * 60 * 1000), // three days ago
         endDate: new Date(), // now
@@ -40,10 +40,9 @@ export class HealthkitService {
           this.odaySteps[key].push(
             value['value']
           );
-          }
         }
+      }
     }
-    
   }
 
   public async saveData() {

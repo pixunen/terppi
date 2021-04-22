@@ -42,11 +42,10 @@
                             Liikunta
                         </mat-panel-title>
                         <mat-panel-description>
-                            Jotain tekstiä tähän?
+                            <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span>
                         </mat-panel-description>
-                    </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='liikuntaScores' style="display: inline"></p></span> <br>
+                    </mat-expansion-panel-header>                   
+                     <br>
                     <button mat-raised-button id="AddLiikuntaBtn">lisää</button>
                 </mat-expansion-panel>
             </mat-accordion> 
@@ -62,11 +61,11 @@
                             Ruokailu
                         </mat-panel-title>
                         <mat-panel-description>
-                            Jotain tekstiä tähän?
+                            <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='ruokaScores' style="display: inline"></p></span> <br>
+                    
+                     <br>
                     <button mat-raised-button id="AddRuokaBtn">Lisää</button>
                     <button mat-raised-button id="AddRuokaBtn2" (click)="addPhotoToGallery()">Kamera</button>
                 </mat-expansion-panel>
@@ -83,11 +82,11 @@
                             Nukkuminen
                         </mat-panel-title>
                         <mat-panel-description>
-                            Jotain tekstiä tähän?
+                            <span>Päivän tavoite: <p [innerHTML]='nukkumisScore' style="display: inline"></p></span>
                         </mat-panel-description>
                     </mat-expansion-panel-header>
-                    <p>Tänne lisätiedot esim</p>
-                    <span>Päivän tavoite: <p [innerHTML]='nukkumisScore' style="display: inline"></p></span> <br>
+                    
+                     <br>
                     <button mat-raised-button id="addNukkuminenBtn">lisää</button>
                 </mat-expansion-panel>
             </mat-accordion>    
