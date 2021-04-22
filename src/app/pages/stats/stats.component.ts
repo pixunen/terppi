@@ -51,9 +51,9 @@ export class StatsComponent implements OnInit {
 
 
   lineChartData: ChartDataSets[] = [
-    { data: [1000, 800, 2000], label: 'Testi Askeleet' },
-    { data: [400, 500, 1200], label: 'Testi Uni' },
-    { data: [200, 1500, 200], label: 'Testi Ruoka' },
+    { data: [100], label: 'Testi Askeleet' },
+    { data: [80], label: 'Testi Uni' },
+    { data: [20], label: 'Testi Ruoka' },
   ];
   lineChartData2: ChartDataSets[] = [
     { data: [], label: 'Askeleet' }
@@ -62,11 +62,21 @@ export class StatsComponent implements OnInit {
     { data: [], label: 'Tavoitteet' }
   ];
 
-  lineChartLabels: Label[] = ['Toissapäivänä', 'Eillen', 'Tänään'];
+  lineChartLabels: Label[] = [''];
   lineChartLabels3: Label[] = ['Ma', 'Ti', 'Ke', 'To', 'Pe', 'La', 'Su'];
 
   lineChartOptions = {
     responsive: true,
+    scales : {
+      yAxes: [{
+         ticks: {
+            steps : 10,
+            stepValue : 10,
+            max : 100,
+            min: 0
+          }
+      }]
+    }
   };
 
   lineChartColors: Color[] = [
@@ -78,7 +88,7 @@ export class StatsComponent implements OnInit {
 
   lineChartLegend = true;
   lineChartPlugins = [];
-  lineChartType: ChartType = 'line';
+  lineChartType: ChartType = 'bar';
   lineChartType3: ChartType = 'bar';
 
 }
